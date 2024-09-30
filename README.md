@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Proyecto Librería Shallom
 
 ## Tabla de contenido
