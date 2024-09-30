@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Proyecto Librería Shallom
 
 ## Tabla de contenido
@@ -919,3 +920,6 @@ SECRET_KEY=clave_secreta
 Para ejecutar las pruebas unitarias, usa Maven:
 ```bash
 mvn test
+=======
+"# Shallom" 
+>>>>>>> 3e18fddc8493ee94321bf490b1c997fdb47b3a73
