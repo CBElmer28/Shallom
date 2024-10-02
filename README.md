@@ -1,14 +1,14 @@
 # Proyecto Librería Shallom
 
 ## Tabla de contenido
-1. Introducción
-2. Requisitos del sistema
-3. Instalación
-4. Estructura del proyecto
-5. API Endpoints
-6. Configuración de entorno
-7. Despliegue
-8. Pruebas
+1. [Introducción](##Introducción)
+2. [Requisitos del sistema](##Requisitos-del-sistema)
+3. [Instalación](##Instalación)
+4. [Estructura del proyecto](##Estructura-del-proyecto)
+5. [API Endpoints](##API-Endpoints)
+6. [Configuración de entorno](##Configuración-de-entorno)
+7. [Despliegue](##Despliegue)
+8. [Pruebas](##Pruebas)
 
 ## Introducción
 Este proyecto corresponde a un aplicativo web para la librería Shallom, que posee funciones para los clientes y el administrador. La documentación técnica proporciona instrucciones detalladas para la implementación y desarrollo del sistema.
