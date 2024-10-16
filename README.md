@@ -22,6 +22,7 @@ Este proyecto corresponde a un aplicativo web para la librería Shallom, que pos
 - Framework CSS: Bootstrap (v5.x)
 - Preprocesador CSS: SCSS
 - Motor de plantillas: Java Server Pages (JSP)
+- IDE: IntelliJ IDEA
 
 ## Instalación
 
