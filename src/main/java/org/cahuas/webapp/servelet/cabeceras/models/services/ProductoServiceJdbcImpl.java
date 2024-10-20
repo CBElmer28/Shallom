@@ -67,9 +67,9 @@ public class ProductoServiceJdbcImpl implements ProductoService{
     }
 
     @Override
-    public Optional<Proveedor> porIdCategoria(int id) {
+    public Proveedor  porIdCategoria(int id) {
         try {
-            return Optional.ofNullable(repositoryProveedorJdbc.porId(id));
+            return repositoryProveedorJdbc.porId(id);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }

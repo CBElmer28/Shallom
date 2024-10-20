@@ -16,7 +16,17 @@ public class Producto {
         this.cat = cat;
         this.precio = precio;
         this.stock = stock;
+        this.id_proveedor = new Proveedor();
         id_proveedor.setCo(proveedor);
+        this.ruta_imagen = ruta_imagen;
+    }
+
+    public Producto(String nom, String cat, int precio, int stock, Proveedor id_proveedor, String ruta_imagen) {
+        this.nom = nom;
+        this.cat = cat;
+        this.precio = precio;
+        this.stock = stock;
+        this.id_proveedor = id_proveedor;
         this.ruta_imagen = ruta_imagen;
     }
 

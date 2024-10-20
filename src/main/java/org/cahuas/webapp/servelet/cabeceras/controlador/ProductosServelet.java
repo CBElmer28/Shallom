@@ -1,6 +1,7 @@
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@WebServlet("/productos")
 public class ProductosServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +28,7 @@ public class ProductosServelet extends HttpServlet {
             ProductoService service = new ProductoServiceJdbcImpl(conn);
             List<Producto> productos = service.listar();
             req.setAttribute("productos", productos);
-            getServletContext().getRequestDispatcher("admin/inventario.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/admin/inventario.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

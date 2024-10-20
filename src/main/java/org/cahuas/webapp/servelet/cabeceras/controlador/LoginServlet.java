@@ -21,11 +21,11 @@ import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
 @WebServlet(name = "login", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-
+   
     private static final long serialVersionUID = 1L;
-    
-    @Override
-        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+   
+      @Override
+       protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try {
@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet {
         }
         
         
-    }
+       }
 
+   
 }
