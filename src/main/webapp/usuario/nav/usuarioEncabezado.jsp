@@ -12,7 +12,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="/webbs/usuario/index.jsp" class="js-logo-clone">Shoppers</a>
+                <a href="/webbs/usuario/index.jsp" class="js-logo-clone">Shalom</a>
               </div>
             </div>
 

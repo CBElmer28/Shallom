@@ -17,5 +17,5 @@ public interface ProductoService {
 
     List<Proveedor> listarCategoria();
 
-    Optional<Proveedor> porIdCategoria(int id);
+    Proveedor porIdCategoria(int id);
 }

@@ -17,12 +17,13 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
     private Producto getProducto(ResultSet rs) throws SQLException {
         Producto p = new Producto();
         p.setId(rs.getInt("id"));
-        p.setNom(rs.getString("nombre"));
+        p.setNom(rs.getString("nom"));
         p.setPrecio(rs.getInt("precio"));
         p.setStock(rs.getInt("stock"));
         Proveedor c = new Proveedor();
         c.setId(rs.getInt("id_proveedor"));
         c.setCo(rs.getString("razon_social"));
+        p.setRuta_imagen(rs.getString("ruta_imagen"));
         p.setId_proveedor(c);
 
         return p;
@@ -32,8 +33,8 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
     public List<Producto> listar() throws SQLException {
         List<Producto> productos = new ArrayList<>();
         try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT p.id, p.nom, p.precio, p.stock,p.ruta_imagen  p.id_proveedor, pr.co AS razon_social \n" +
-                     " FROM productos p\n " +
+             ResultSet rs = stmt.executeQuery("SELECT p.id, p.nom, p.precio, p.stock, p.ruta_imagen, p.id_proveedor, pr.co AS razon_social " +
+                     " FROM productos p " +
                      " JOIN proveedor pr ON p.id_proveedor = pr.id")) {
             while (rs.next()) {
                 Producto p = getProducto(rs);
@@ -68,8 +69,8 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
             sql = "insert into productos (nom, cat, precio, stock, id_proveedor, ruta_imagen) values (?,?,?,?,?,?)";
         }
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, producto.getId());
-            stmt.setString(2, producto.getNom());
+            stmt.setString(1, producto.getNom());
+            stmt.setInt(2, producto.getId_proveedor().getId());
             stmt.setInt(3, producto.getPrecio());
             stmt.setInt(4, producto.getStock());
             stmt.setInt(5, producto.getId_proveedor().getId());

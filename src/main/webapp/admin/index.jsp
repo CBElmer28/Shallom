@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="/webbs/admin/inventario.jsp">
+                    <a href="/webbs/productos">
                         <span class="icon">
                             <ion-icon name="archive"></ion-icon>
                         </span>
@@ -66,7 +66,7 @@
                         <span class="icon">
                             <ion-icon name="settings"></ion-icon>
                         </span>
-                        <span class="title">Configuración</span>
+                        <span class="title">Configuracion</span>
                     </a>
                 </li>
 
@@ -183,7 +183,7 @@
                                 <td>Borrador Artesco</td>
                                 <td>S/ 0.80</td>
                                 <td>50</td>
-                                <td>S/40.00</td>
+                                <td>S/ 40.00</p></td>
                                 <td><span class="status return">Cancelado</span></td>
                             </tr>
 
