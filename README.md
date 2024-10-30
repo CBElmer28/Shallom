@@ -534,3 +534,6 @@ SECRET_KEY=clave_secreta
 -JaserReports: Para la generación de boletas en formato PDF. 
 -ApachePOI: Para la generación de documentos office como excel para la visualización de la tabla de productos.
 
+
+
+
