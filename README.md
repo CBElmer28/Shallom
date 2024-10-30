@@ -495,8 +495,9 @@ C:.
 - **POST /api/login**: Realiza el inicio de sesión de un usuario o administrador.
 - **GET /api/logout**: Realiza la salida de sesión del usuario o administrador.
 - **GET /api/productos**: Añade un producto al carrito de compras.
-- **
-- **
+- **POST /agregarproducto**: Agrega un producto a la BD
+- **POST /eliminarproducto** Elimina un producto de la BD
+- **POST /actualizarproducto** Actualiza un producto de la BD
 
 ## Configuración de entorno
 
