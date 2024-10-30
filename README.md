@@ -8,7 +8,6 @@
 5. [API Endpoints](#API-Endpoints)
 6. [Configuración de entorno](#Configuración-de-entorno)
 7. [Despliegue](#Despliegue)
-8. [Pruebas](#Pruebas)
 
 ## Introducción
 Este proyecto corresponde a un aplicativo web para la librería Shallom, que posee funciones para los clientes y el administrador. La documentación técnica proporciona instrucciones detalladas para la implementación y desarrollo del sistema.
@@ -496,6 +495,8 @@ C:.
 - **POST /api/login**: Realiza el inicio de sesión de un usuario o administrador.
 - **GET /api/logout**: Realiza la salida de sesión del usuario o administrador.
 - **GET /api/productos**: Añade un producto al carrito de compras.
+- **
+- **
 
 ## Configuración de entorno
 
@@ -525,20 +526,3 @@ SECRET_KEY=clave_secreta
    ```bash
    cp /ruta/a/tu_aplicacion.war /ruta/a/tomcat/webapps/
    ```
-## Pruebas
-
-### Tipos de Pruebas
-- **Pruebas Unitarias**: Validan el comportamiento de métodos individuales.
-- **Pruebas de Integración**: Aseguran que los diferentes módulos funcionen juntos correctamente.
-
-### Herramientas Utilizadas
-- **JUnit**: Para pruebas unitarias.
-- **Mockito**: Para pruebas de simulación.
-
-### Ejecutar Pruebas
-Para ejecutar las pruebas unitarias, usa Maven:
-```bash
-mvn test
-=======
-"# Shallom" 
->>>>>>> 3e18fddc8493ee94321bf490b1c997fdb47b3a73
