@@ -1,333 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
-    <!-- ======= Styles ====== -->
-    <link rel="icon" href="assets/imgs/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="assets/css/style.css"/>
+	<title>AdminHub</title>
 </head>
-
 <body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-ico><img src="assets/imgs/icon.png"></ion-icon>
-                        </span>
-                        <span class="namsp">SHALOM</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="home"></ion-icon>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
+	<!-- SIDEBAR -->
+	<section id="sidebar" class="text-black">
+        <a href="#" class="brand">
+            <i class='bx bxs-cloud fs-3'></i>
+            <span class="fs-4 ms-2">AdminHub</span>
+        </a>
+        <ul class="nav flex-column" id="t">
+            <li class="nav-item" id="actives">
+                <a href="/webbs/admin/index.jsp" class="active">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="/webbs/productos">
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">My Store</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <i class='bx bxs-message-dots'></i>
+                    <span class="text">Message</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Team</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="people"></ion-icon>
-                        </span>
-                        <span class="title">Clientes</span>
-                    </a>
-                </li>
+        </ul>
+        <ul class="nav flex-column">
+            <li class="nav-item ">
+                <a href="#">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="/webbs/logout" style="color: red;">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
 
-                <li>
-                    <a href="/webbs/productos">
-                        <span class="icon">
-                            <ion-icon name="archive"></ion-icon>
-                        </span>
-                        <span class="title">Inventario</span>
-                    </a>
-                </li>
+    </section>
+	<!-- SIDEBAR -->
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="document-text"></ion-icon>
-                        </span>
-                        <span class="title">Documentos</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings"></ion-icon>
-                        </span>
-                        <span class="title">Configuracion</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="help-circle"></ion-icon>
-                        </span>
-                        <span class="title">Ayuda</span>
-                    </a>
-                </li>
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-expand-lg navbar-light  " style="background-color: #F9F9F9;">
+            <div class="container-fluid">
 
-                <li>
-                    <a href="/webbs/logout">
-                        <span class="icon">
-                            <ion-icon name="log-out"></ion-icon>
-                        </span>
-                        <span class="title">Salir</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+                <!-- Botón para ocultar el sidebar -->
+                <i class="bx bx-menu fs-3" id="menu-btn" style="cursor: pointer;" aria-label="Toggle Sidebar"></i>
 
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
+                <!-- Título de la barra de navegación -->
+                <a class="navbar-brand ms-2" href="#">Categories</a>
 
-                <div class="user">
-                    <img src="assets/imgs/customer03.png" alt="">
-                </div>
-            </div>
+                <!-- Botón de colapso para dispositivos pequeños -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Vistas diarias</div>
-                    </div>
+                <!-- Contenido colapsable del navbar -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Barra de búsqueda -->
+                    <form class="d-flex ms-auto mt-2 mt-lg-0">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit" aria-label="Search Button">
+                            <i class='bx bx-search'></i>
+                        </button>
+                    </form>
 
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">100</div>
-                        <div class="cardName">Transacciones</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="bag-handle-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">54</div>
-                        <div class="cardName">Pedidos</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="clipboard-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">S/ 1,842</div>
-                        <div class="cardName">Venta del día</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
+                    <!-- Iconos adicionales (notificaciones y perfil) -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="#" class="btn btn-outline-secondary ms-3 position-relative"
+                                aria-label="Notifications">
+                                <i class='bx bxs-bell'></i>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    8
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="btn btn-outline-secondary ms-3" aria-label="Profile">
+                                <img src="assets/img/people.png" alt="Profile" class="rounded-circle" width="40">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </nav>
+		<!-- NAVBAR -->
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Pedidos Recientes</h2>
-                        <a href="#" class="btn">Ver todo</a>
-                    </div>
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Nombre</td>
-                                <td>Precio</td>
-                                <td>Cantidad</td>
-                                <td>Total</td>
-                                <td>Estado</td>
-                            </tr>
-                        </thead>
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3>1020</h3>
+						<p>New Order</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3>2834</h3>
+						<p>Visitors</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>$2543</h3>
+						<p>Total Sales</p>
+					</span>
+				</li>
+			</ul>
 
-                        <tbody>
 
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status process">Process</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>Todos</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
 
-                            <tr>
-                                <td>CASIO FX-350</td>
-                                <td>S/40.00</td>
-                                <td>5</td>
-                                <td>S/200.00</td>
-                                <td><span class="status inProgress">En ruta</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Borrador Artesco</td>
-                                <td>S/ 0.80</td>
-                                <td>50</td>
-                                <td>S/ 40.00</p></td>
-                                <td><span class="status return">Cancelado</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Cuaderno anillado Surco</td>
-                                <td>S/6.00</td>
-                                <td>10</td>
-                                <td>S/60.00</td>
-                                <td><span class="status delivered">Entregado</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Grapador Ova</td>
-                                <td>S/12.00</td>
-                                <td>4</td>
-                                <td>S/48.00</td>
-                                <td><span class="status delivered">Entregado</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Archivador acordeón beautone A4</td>
-                                <td>S/34.00</td>
-                                <td>2</td>
-                                <td>S/68.00</td>
-                                <td><span class="status delivered">Entregado</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Plumón Faber-Castell Fiesta 45 Estuche Cartón</td>
-                                <td>S/20.00</td>
-                                <td>2</td>
-                                <td>S/40.00</td>
-                                <td><span class="status inProgress">En ruta</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Papel Fotografico OFFICE</td>
-                                <td>S/14.00</td>
-                                <td>7</td>
-                                <td>S/84.00</td>
-                                <td><span class="status pending">Pendiente</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Goma en barra x 50ml</td>
-                                <td>S/0.80</td>
-                                <td>36</td>
-                                <td>S/28.80</td>
-                                <td><span class="status inProgress">En ruta</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Clientes Recientes</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Gilberto <br> <span>Frecuente</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>Nuevo</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Frecuente</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Felipe <br> <span>Frecuente</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Jesús <br> <span>Nuevo</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Luis <br> <span>Frecuente</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Pedro <br> <span>Nuevo</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Alberto <br> <span>Nuevo</span></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<script src="assets/js/script.js"></script>
 </body>
-
 </html>

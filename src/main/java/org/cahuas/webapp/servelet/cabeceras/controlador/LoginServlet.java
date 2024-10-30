@@ -21,9 +21,7 @@ import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
 @WebServlet(name = "login", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-   
-    private static final long serialVersionUID = 1L;
-   
+
       @Override
        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String username = req.getParameter("username");
@@ -32,13 +30,9 @@ public class LoginServlet extends HttpServlet {
             Connection conn = ConexionBaseDatos.getConnection();
             LoginServiceJdbcImpl usu = new LoginServiceJdbcImpl(conn);
             Usuario ne =usu.UsuarioSesion(username, password);
-
         if (ne != null && ne.getUser().equals(username) && ne.getPass().equals(password)) {
-            // Crear una nueva sesión para el usuario
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
-            session.setMaxInactiveInterval(10 * 60); // 10 minutos de inactividad
-            // Verificar el tipo de usuario y redirigir a la página correspondiente
             if ("admin".equals(ne.getTipo())) {
                 resp.sendRedirect(req.getContextPath() + "/admin/index.jsp");
             } else if ("empleado".equals(ne.getTipo())) {
@@ -46,15 +40,13 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/usuario/index.jsp");
             }
         } else {
-            // Si los datos no son correctos, redirigir al login
+            // REDIRIGE AL LOGIN
             resp.sendRedirect(req.getContextPath()+"/usuario/login.jsp");
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
             resp.sendRedirect(req.getContextPath()+"/usuario/index.jsp");
         }
-        
-        
        }
 
    

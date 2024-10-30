@@ -11,6 +11,8 @@ public interface ProductoService {
 
     Optional<Producto> porId(int id);
 
+    Producto buscarId(int id);
+
     void guardar(Producto producto);
 
     void eliminar(int id);

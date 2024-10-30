@@ -22,22 +22,34 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
         p.setStock(rs.getInt("stock"));
         Proveedor c = new Proveedor();
         c.setId(rs.getInt("id_proveedor"));
-        c.setCo(rs.getString("razon_social"));
         p.setRuta_imagen(rs.getString("ruta_imagen"));
         p.setId_proveedor(c);
-
+        return p;
+    }
+    private Producto getProductoprovee(ResultSet rs) throws SQLException {
+        Producto p = new Producto();
+        p.setId(rs.getInt("id"));
+        p.setNom(rs.getString("nom"));
+        p.setPrecio(rs.getInt("precio"));
+        p.setStock(rs.getInt("stock"));
+        Proveedor c = new Proveedor();
+        c.setId(rs.getInt("id_proveedor"));
+        c.setCo(rs.getString("co"));
+        p.setRuta_imagen(rs.getString("ruta_imagen"));
+        p.setId_proveedor(c);
         return p;
     }
 
     @Override
     public List<Producto> listar() throws SQLException {
         List<Producto> productos = new ArrayList<>();
+        String sql = "SELECT p.id, p.nom, p.precio, p.stock, p.ruta_imagen, p.id_proveedor, pr.co " +
+                "FROM productos p " +
+                " JOIN proveedor pr ON p.id_proveedor = pr.id";
         try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT p.id, p.nom, p.precio, p.stock, p.ruta_imagen, p.id_proveedor, pr.co AS razon_social " +
-                     " FROM productos p " +
-                     " JOIN proveedor pr ON p.id_proveedor = pr.id")) {
+             ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Producto p = getProducto(rs);
+                Producto p = getProductoprovee(rs);
                 productos.add(p);
             }
         }
@@ -60,6 +72,8 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
         return producto;
     }
 
+
+
     @Override
     public void guardar(Producto producto) throws SQLException {
         String sql;
@@ -69,15 +83,15 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
             sql = "insert into productos (nom, cat, precio, stock, id_proveedor, ruta_imagen) values (?,?,?,?,?,?)";
         }
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, producto.getNom());
+            stmt.setString(1, producto.getNom());//
             stmt.setInt(2, producto.getId_proveedor().getId());
-            stmt.setInt(3, producto.getPrecio());
-            stmt.setInt(4, producto.getStock());
-            stmt.setInt(5, producto.getId_proveedor().getId());
+            stmt.setInt(3, producto.getPrecio());//
+            stmt.setInt(4, producto.getStock());//
+            stmt.setInt(5, producto.getId_proveedor().getId());//
             stmt.setString(6, producto.getRuta_imagen());
 
             if ( producto.getId() > 0) {
-                stmt.setInt(5, producto.getId());
+                stmt.setInt(7, producto.getId());
             }
             stmt.executeUpdate();
         }
@@ -87,8 +101,9 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
     public void eliminar(int id) throws SQLException {
         String sql = "delete from productos where id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, id);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
         }
     }
+
 }

@@ -33,7 +33,7 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="has-children active">
-              <a href="index.html">INICIO</a>
+              <a href="index.jsp">INICIO</a>
               <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
@@ -56,8 +56,8 @@
                 <li><a href="#">Menu Three</a></li>
               </ul>
             </li>
-            <li><a href="shop.html">TIENDA</a></li>
-            <li><a href="contact.html">CONTÁCTANOS</a></li>
+            <li><a href="/webbs/usuario/productos">TIENDA</a></li>
+            <li><a href="contact.jsp">CONTÁCTANOS</a></li>
           </ul>
         </div>
       </nav>

@@ -5,15 +5,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 li {
-    list-style: none;
+	list-style: none;
 }
-
 :root {
     --poppins: 'Poppins', sans-serif;
     --lato: 'Lato', sans-serif;
@@ -110,7 +108,7 @@ body {
     right: 0;
     box-shadow: 20px 20px 0 var(--grey);
     z-index: -1;
-} 
+}
 
 #sidebar .nav li#actives::after {
     content: '';
@@ -157,20 +155,30 @@ body {
     font-size: 20px;
 }
 
-
-
-
-
 /* CONTENT */
 #content {
-	position: relative;
-	width: calc(100% - 220px);
-	left: 220px;
-	transition: .3s ease;
+    position: fixed;
+    width: calc(100% - 220px);
+    left: 220px;
+    transition: .3s ease;
 }
-#sidebar.hide ~ #content {
-	width: calc(100% - 60px);
-	left: 60px;
+
+#sidebar.hide~#content {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.sidebar {
+    height: calc(100vh - 60px);
+    position: sticky;
+    top: 0;
+}
+
+
+/* Scroll solo en el contenedor de productos */
+.product-container {
+    height: calc(100vh - 60px); /* Ajusta este valor según la altura de tu navbar */
+    overflow-y: auto;
 }
 
 
@@ -276,6 +284,39 @@ body {
 
 
 
+/* Botones con íconos */
+.icon-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 16px;
+}
+
+.icon-button i {
+    color: var(--blue);
+}
+
+/* Colores específicos para cada botón */
+.icon-button.excel i {
+    color: #28a745; /* Azul para Excel */
+}
+
+.icon-button.pdf i {
+    color: #ff0000; /* Rojo para PDF */
+}
+
+.icon-button.agregar i {
+    color: #007bff; /* Verde para agregar */
+}
+
+/* Efecto hover */
+.icon-button:hover i {
+    opacity: 0.8; /* Un ligero cambio en la opacidad al pasar el cursor */
+}
+
+
+/* General */
 #content main .table-data {
 	display: flex;
 	flex-wrap: wrap;
@@ -283,179 +324,188 @@ body {
 	margin-top: 24px;
 	width: 100%;
 	color: var(--dark);
+	padding-left: 1% ;
+	padding-right: 1%;
 }
+
+/* Contenedor de las tablas */
 #content main .table-data > div {
 	border-radius: 20px;
 	background: var(--light);
 	padding: 24px;
 	overflow-x: auto;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra para efecto de elevación */
+	
 }
+
+/* Encabezado de las tablas */
 #content main .table-data .head {
 	display: flex;
-	align-items: center;
-	grid-gap: 16px;
-	margin-bottom: 24px;
+    align-items: center;
+    justify-content: space-between; /* Para que los botones estén a la izquierda y la barra de búsqueda a la derecha */
+    grid-gap: 16px;
+    margin-bottom: 24px;
 }
-#content main .table-data .head h3 {
+
+#content main .table-data .head form {
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+	width: 100%;
 	margin-right: auto;
-	font-size: 24px;
-	font-weight: 600;
+	color: var(--primary-color); /* Color más llamativo */
 }
-#content main .table-data .head .bx {
-	cursor: pointer;
+
+#content main .table-data .head form  .form-input{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;;
+    height: 36px;
+    margin-left: auto; 
 }
+
+
+#content main .table-data .head form  .form-input input {
+	flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    color: var(--dark);
+}
+
+#content main .table-data .head form  .form-input button {
+	width: 36px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: var(--light);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
+
+
+
+/* Tablas */
 
 #content main .table-data .order {
 	flex-grow: 1;
-	flex-basis: 500px;
+	flex-basis: 400px;
+	margin: 0 auto; /* Centrar la tabla horizontalmente */
+	width: 90%; /* Ajuste de la anchura */
 }
+
 #content main .table-data .order table {
 	width: 100%;
 	border-collapse: collapse;
 }
-#content main .table-data .order table th {
-	padding-bottom: 12px;
-	font-size: 13px;
-	text-align: left;
-	border-bottom: 1px solid var(--grey);
-}
+
+#content main .table-data .order table th, 
 #content main .table-data .order table td {
-	padding: 16px 0;
+	font-size: 12px; /* Tamaño de fuente unificado */
+	text-align: center; /* Centrar el contenido */
+	vertical-align: middle; /* Alinear verticalmente */
+	padding: 12px 10px; /* Espaciado consistente */
+	border-bottom: 1px solid var(--grey); /* Bordes */
 }
+
+/* Alinear imágenes en la primera columna */
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
+	justify-content: center; /* Centrar imagen y contenido */
 	grid-gap: 12px;
-	padding-left: 6px;
+	padding-left: 12px;
 }
+
+/* Ajuste del tamaño de las imágenes */
 #content main .table-data .order table td img {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	object-fit: cover;
+	width: 60px; /* Tamaño de imagen cuadrado */
+	height: 60px;
+	border-radius: 10px;
+	object-fit: cover; /* Evitar deformación de la imagen */
+	margin-right: 10px;
 }
-#content main .table-data .order table tbody tr:hover {
-	background: var(--grey);
-}
+
+/* Estados de las órdenes */
 #content main .table-data .order table tr td .status {
-	font-size: 10px;
-	padding: 6px 16px;
+	font-size: 14px; /* Tamaño de fuente ajustado */
+	padding: 8px 16px;
 	color: var(--light);
 	border-radius: 20px;
 	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
+
+/* Hover en las filas */
+#content main .table-data .order table tbody tr:hover {
+	background: none; /* Sin cambios de fondo al hover */
+	transition: none;
+}
+
+/* Ajuste de las filas y los estados */
 #content main .table-data .order table tr td .status.completed {
-	background: var(--blue);
+	background: var(--green); /* Cambié el color por verde */
 }
+
 #content main .table-data .order table tr td .status.process {
 	background: var(--yellow);
 }
+
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
 }
 
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+	#content main .table-data {
+		grid-gap: 16px;
+	}
 
-#content main .table-data .todo {
-	flex-grow: 1;
-	flex-basis: 300px;
+	#content main .table-data .order table th, 
+	#content main .table-data .order table td {
+		font-size: 12px; /* Reducir el tamaño de fuente en pantallas pequeñas */
+		padding: 12px 8px;
+	}
 }
-#content main .table-data .todo .todo-list {
-	width: 100%;
-}
-#content main .table-data .todo .todo-list li {
-	width: 100%;
-	margin-bottom: 16px;
-	background: var(--grey);
-	border-radius: 10px;
-	padding: 14px 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-#content main .table-data .todo .todo-list li .bx {
-	cursor: pointer;
-}
-#content main .table-data .todo .todo-list li.completed {
-	border-left: 10px solid var(--blue);
-}
-#content main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid var(--orange);
-}
-#content main .table-data .todo .todo-list li:last-child {
-	margin-bottom: 0;
-}
+
+
 /* MAIN */
 /* CONTENT */
 
+.btn {
+	padding: 5px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
 
+.btn.modificar i {
+	color: green;
+	font-size: 18px;
+}
 
+.btn.eliminar i {
+	color: red;
+	font-size: 18px;
+}
 
+/* Hover para cambiar color */
+.btn.modificar:hover i {
+	color: darkgreen;
+}
 
-
-
-
-
-@media screen and (max-width: 768px) {
-	#sidebar {
-		width: 200px;
-	}
-
-	#content {
-		width: calc(100% - 60px);
-		left: 200px;
-	}
-
-	#content nav .nav-link {
-		display: none;
-	}
+.btn.eliminar:hover i {
+	color: darkred;
 }
 
 
-
-
-
-
-@media screen and (max-width: 576px) {
-	#content nav form .form-input input {
-		display: none;
-	}
-
-	#content nav form .form-input button {
-		width: auto;
-		height: auto;
-		background: transparent;
-		border-radius: none;
-		color: var(--dark);
-	}
-
-	#content nav form.show .form-input input {
-		display: block;
-		width: 100%;
-	}
-	#content nav form.show .form-input button {
-		width: 36px;
-		height: 100%;
-		border-radius: 0 36px 36px 0;
-		color: var(--light);
-		background: var(--red);
-	}
-
-	#content nav form.show ~ .notification,
-	#content nav form.show ~ .profile {
-		display: none;
-	}
-
-	#content main .box-info {
-		grid-template-columns: 1fr;
-	}
-
-	#content main .table-data .head {
-		min-width: 420px;
-	}
-	#content main .table-data .order table {
-		min-width: 420px;
-	}
-	#content main .table-data .todo .todo-list {
-		min-width: 420px;
-	}
-}
