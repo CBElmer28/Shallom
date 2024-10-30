@@ -1,7 +1,5 @@
 *.java linguist-detectable=true
-*.html linguist-detectable=false
 *.xml linguist-detectable=false
-*.html linguist-language=Java
 *.jsp linguist-language=Java
 *.css linguist-detectable=false
 *.scss linguist-detectable=false
