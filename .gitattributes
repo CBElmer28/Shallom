@@ -4,3 +4,4 @@
 *.html linguist-language=Java
 *.jsp linguist-language=Java
 *.css linguist-detectable=false
+*.scss linguist-detectable=false
