@@ -3,3 +3,4 @@
 *.xml linguist-detectable=false
 *.html linguist-language=Java
 *.jsp linguist-language=Java
+*.css linguist-detectable=false
