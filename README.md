@@ -8,6 +8,7 @@
 5. [API Endpoints](#API-Endpoints)
 6. [Configuración de entorno](#Configuración-de-entorno)
 7. [Despliegue](#Despliegue)
+8. [Librerias](#Librerias)
 
 ## Introducción
 Este proyecto corresponde a un aplicativo web para la librería Shallom, que posee funciones para los clientes y el administrador. La documentación técnica proporciona instrucciones detalladas para la implementación y desarrollo del sistema.
@@ -527,3 +528,9 @@ SECRET_KEY=clave_secreta
    ```bash
    cp /ruta/a/tu_aplicacion.war /ruta/a/tomcat/webapps/
    ```
+
+## Librerias
+
+-JaserReports: Para la generación de boletas en formato PDF.
+-ApachePOI: Para la generación de documentos office como excel para la visualización de la tabla de productos.
+
