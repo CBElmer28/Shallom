@@ -35,7 +35,15 @@ public class ProductoServiceJdbcImpl implements ProductoService{
             return Optional.ofNullable(repositoryJdbc.porId(id));
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
+        }
+    }
 
+    @Override
+    public Producto buscarId(int id)  {
+        try {
+            return repositoryJdbc.porId(id);
+        } catch (SQLException throwables) {
+            throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
 

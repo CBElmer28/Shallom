@@ -27,6 +27,23 @@ public class Carro {
         return items;
     }
 
+    public int cantidad(String productoId) {
+        return items.stream()
+                .filter(itemCarro -> productoId.equals(Long.toString(itemCarro.getProducto().getId())))
+                .mapToInt(ItemCarro::getCantidad)
+                .findFirst()
+                .orElse(0);
+    }
+
+    public int getTotalProduc(String productoId) {
+        return items.stream()
+                .filter(itemCarro -> productoId.equals(Long.toString(itemCarro.getProducto().getId())))
+                .mapToInt(ItemCarro::getImporte)
+                .findFirst()
+                .orElse(0);
+
+    }
+
     public int getTotal() {
         return items.stream().mapToInt(ItemCarro::getImporte).sum();
     }
@@ -53,5 +70,17 @@ public class Carro {
         return  items.stream()
                 .filter(itemCarro -> productoId.equals(Long.toString(itemCarro.getProducto().getId())))
                 .findAny();
+    }
+
+    public List<DatalleProducto> getDetalleProductos() {
+        List<DatalleProducto> productos = new ArrayList<>();
+        for (ItemCarro itemCarro : items) {
+            String nom= itemCarro.getProducto().getNom();
+            Integer cantidad= itemCarro.getCantidad();
+            Integer pUnitario = itemCarro.getProducto().getPrecio();
+            Integer totalproduc = this.getTotalProduc(Long.toString(itemCarro.getProducto().getId()));
+            productos.add(new DatalleProducto( cantidad,nom, pUnitario, totalproduc));
+        }
+        return productos;
     }
 }

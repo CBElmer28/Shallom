@@ -16,4 +16,5 @@ public interface Repository <T>{
     T porId(int id) throws SQLException;
     void guardar(T t) throws SQLException;
     void eliminar(int id) throws SQLException;
+
 }

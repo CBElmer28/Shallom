@@ -1,0 +1,413 @@
+Listado de rutas de carpetas para el volumen PRINCIPAL
+El n£mero de serie del volumen es 8201-77E7
+C:.
+|   .gitattributes
+|   .gitignore
+|   pom.xml
+|   README.md
+|   structure.txt
+|   
++---.idea
+|       .gitignore
+|       compiler.xml
+|       encodings.xml
+|       jarRepositories.xml
+|       misc.xml
+|       uiDesigner.xml
+|       webContexts.xml
+|       workspace.xml
+|       
+\---src
+    \---main
+        +---java
+        |   \---org
+        |       \---cahuas
+        |           \---webapp
+        |               \---servelet
+        |                   \---cabeceras
+        |                       +---controlador
+        |                       |       AgregarCarroServelet.java
+        |                       |       AgregarProductoServelet.java
+        |                       |       EliminarProductoServelet.java
+        |                       |       ExportarBoletaServelet.java
+        |                       |       LoginServlet.java
+        |                       |       LogoutServlet.java
+        |                       |       ProductoServelet.java
+        |                       |       ProductosServelet.java
+        |                       |       
+        |                       \---models
+        |                           +---filters
+        |                           |       ConexionFilter.java
+        |                           |       LoginAdminFilter.java
+        |                           |       
+        |                           +---listeners
+        |                           |       AplicacionListener.java
+        |                           |       
+        |                           +---modelo
+        |                           |       Carro.java
+        |                           |       DatalleProducto.java
+        |                           |       ItemCarro.java
+        |                           |       Producto.java
+        |                           |       Proveedor.java
+        |                           |       Usuario.java
+        |                           |       
+        |                           +---repositories
+        |                           |       ProductoRepositoryImpl.java
+        |                           |       ProveedorRepositoryImpl.java
+        |                           |       Repository.java
+        |                           |       RepositoryUsuario.java
+        |                           |       UsuarioRepositoryJdbcImpl.java
+        |                           |       
+        |                           +---services
+        |                           |       LoginService.java
+        |                           |       LoginServiceJdbcImpl.java
+        |                           |       ProductoService.java
+        |                           |       ProductoServiceJdbcImpl.java
+        |                           |       ServiceJdbcException.java
+        |                           |       
+        |                           \---util
+        |                                   ConexionBaseDatos.java
+        |                                   
+        +---resources
+        \---webapp
+            |   index.html
+            |   
+            +---admin
+            |   |   boopracti.html
+            |   |   index.jsp
+            |   |   inventario.jsp
+            |   |   
+            |   \---assets
+            |       +---css
+            |       |       bopracti.css
+            |       |       modal.css
+            |       |       style.css
+            |       |       tabla.css
+            |       |       
+            |       +---img
+            |       |       cloth_1.jpg
+            |       |       cloth_2.jpg
+            |       |       cloth_3.jpg
+            |       |       people.png
+            |       |       
+            |       +---imgs
+            |       |       customer01.jpg
+            |       |       customer02.jpg
+            |       |       customer03.png
+            |       |       icon.png
+            |       |       
+            |       \---js
+            |               main.js
+            |               modal.js
+            |               script.js
+            |               
+            +---reportesJasper
+            |   |   boletaIntento.jasper
+            |   |   BoletaProuctos.jasper
+            |   |   BoletaProuctos_2.jasper
+            |   |   
+            |   \---img
+            |           logoo.png
+            |           
+            +---usuario
+            |   |   .DS_Store
+            |   |   about.html
+            |   |   cart.html
+            |   |   cart.jsp
+            |   |   checkout.html
+            |   |   checkout.jsp
+            |   |   contact.html
+            |   |   contact.jsp
+            |   |   index.jsp
+            |   |   login.jsp
+            |   |   prepros-6.config
+            |   |   shop-single.html
+            |   |   shop-single.jsp
+            |   |   shop.html
+            |   |   shop.jsp
+            |   |   thankyou.html
+            |   |   thankyou.jsp
+            |   |   
+            |   +---css
+            |   |   |   aos.css
+            |   |   |   bootstrap.min.css
+            |   |   |   jquery-ui.css
+            |   |   |   magnific-popup.css
+            |   |   |   main.css
+            |   |   |   owl.carousel.min.css
+            |   |   |   owl.theme.default.min.css
+            |   |   |   style.css
+            |   |   |   util.css
+            |   |   |   
+            |   |   \---bootstrap
+            |   |           bootstrap-grid.css
+            |   |           bootstrap-reboot.css
+            |   |           
+            |   +---fonts
+            |   |   +---font-awesome-4.7.0
+            |   |   |   |   HELP-US-OUT.txt
+            |   |   |   |   
+            |   |   |   +---css
+            |   |   |   |       font-awesome.css
+            |   |   |   |       font-awesome.min.css
+            |   |   |   |       
+            |   |   |   +---fonts
+            |   |   |   |       fontawesome-webfont.eot
+            |   |   |   |       fontawesome-webfont.svg
+            |   |   |   |       fontawesome-webfont.ttf
+            |   |   |   |       fontawesome-webfont.woff
+            |   |   |   |       fontawesome-webfont.woff2
+            |   |   |   |       FontAwesome.otf
+            |   |   |   |       
+            |   |   |   +---less
+            |   |   |   |       animated.less
+            |   |   |   |       bordered-pulled.less
+            |   |   |   |       core.less
+            |   |   |   |       fixed-width.less
+            |   |   |   |       font-awesome.less
+            |   |   |   |       icons.less
+            |   |   |   |       larger.less
+            |   |   |   |       list.less
+            |   |   |   |       mixins.less
+            |   |   |   |       path.less
+            |   |   |   |       rotated-flipped.less
+            |   |   |   |       screen-reader.less
+            |   |   |   |       stacked.less
+            |   |   |   |       variables.less
+            |   |   |   |       
+            |   |   |   \---scss
+            |   |   |           font-awesome.scss
+            |   |   |           _animated.scss
+            |   |   |           _bordered-pulled.scss
+            |   |   |           _core.scss
+            |   |   |           _fixed-width.scss
+            |   |   |           _icons.scss
+            |   |   |           _larger.scss
+            |   |   |           _list.scss
+            |   |   |           _mixins.scss
+            |   |   |           _path.scss
+            |   |   |           _rotated-flipped.scss
+            |   |   |           _screen-reader.scss
+            |   |   |           _stacked.scss
+            |   |   |           _variables.scss
+            |   |   |           
+            |   |   +---icomoon
+            |   |   |   |   demo.html
+            |   |   |   |   Read Me.txt
+            |   |   |   |   selection.json
+            |   |   |   |   style.css
+            |   |   |   |   
+            |   |   |   +---demo-files
+            |   |   |   |       demo.css
+            |   |   |   |       demo.js
+            |   |   |   |       
+            |   |   |   \---fonts
+            |   |   |           icomoon.eot
+            |   |   |           icomoon.svg
+            |   |   |           icomoon.ttf
+            |   |   |           icomoon.woff
+            |   |   |           
+            |   |   +---Linearicons-Free-v1.0.0
+            |   |   |   |   icon-font.min.css
+            |   |   |   |   
+            |   |   |   \---WebFont
+            |   |   |           Linearicons-Free.eot
+            |   |   |           Linearicons-Free.svg
+            |   |   |           Linearicons-Free.ttf
+            |   |   |           Linearicons-Free.woff
+            |   |   |           Linearicons-Free.woff2
+            |   |   |           
+            |   |   +---montserrat
+            |   |   |       Montserrat-Black.ttf
+            |   |   |       Montserrat-BlackItalic.ttf
+            |   |   |       Montserrat-Bold.ttf
+            |   |   |       Montserrat-BoldItalic.ttf
+            |   |   |       Montserrat-ExtraBold.ttf
+            |   |   |       Montserrat-ExtraBoldItalic.ttf
+            |   |   |       Montserrat-ExtraLight.ttf
+            |   |   |       Montserrat-ExtraLightItalic.ttf
+            |   |   |       Montserrat-Italic.ttf
+            |   |   |       Montserrat-Light.ttf
+            |   |   |       Montserrat-LightItalic.ttf
+            |   |   |       Montserrat-Medium.ttf
+            |   |   |       Montserrat-MediumItalic.ttf
+            |   |   |       Montserrat-Regular.ttf
+            |   |   |       Montserrat-SemiBold.ttf
+            |   |   |       Montserrat-SemiBoldItalic.ttf
+            |   |   |       Montserrat-Thin.ttf
+            |   |   |       Montserrat-ThinItalic.ttf
+            |   |   |       OFL.txt
+            |   |   |       
+            |   |   +---poppins
+            |   |   |       Poppins-Black.ttf
+            |   |   |       Poppins-BlackItalic.ttf
+            |   |   |       Poppins-Bold.ttf
+            |   |   |       Poppins-BoldItalic.ttf
+            |   |   |       Poppins-ExtraBold.ttf
+            |   |   |       Poppins-ExtraBoldItalic.ttf
+            |   |   |       Poppins-ExtraLight.ttf
+            |   |   |       Poppins-ExtraLightItalic.ttf
+            |   |   |       Poppins-Italic.ttf
+            |   |   |       Poppins-Light.ttf
+            |   |   |       Poppins-LightItalic.ttf
+            |   |   |       Poppins-Medium.ttf
+            |   |   |       Poppins-MediumItalic.ttf
+            |   |   |       Poppins-Regular.ttf
+            |   |   |       Poppins-SemiBold.ttf
+            |   |   |       Poppins-SemiBoldItalic.ttf
+            |   |   |       Poppins-Thin.ttf
+            |   |   |       Poppins-ThinItalic.ttf
+            |   |   |       
+            |   |   \---ubuntu
+            |   |           Ubuntu-Bold.ttf
+            |   |           Ubuntu-BoldItalic.ttf
+            |   |           Ubuntu-Italic.ttf
+            |   |           Ubuntu-Light.ttf
+            |   |           Ubuntu-LightItalic.ttf
+            |   |           Ubuntu-Medium.ttf
+            |   |           Ubuntu-MediumItalic.ttf
+            |   |           Ubuntu-Regular.ttf
+            |   |           UFL.txt
+            |   |           
+            |   +---images
+            |   |   |   blank_avatar.png
+            |   |   |   blog_1.jpg
+            |   |   |   blog_12.png
+            |   |   |   Children.jpg
+            |   |   |   cloth_1.jpg
+            |   |   |   cloth_111.jpg
+            |   |   |   cloth_2.jpg
+            |   |   |   cloth_3.jpg
+            |   |   |   faber-castell-boligrafo-032-m-trilux-x-12-surt-343211-33748-default-1.jpg
+            |   |   |   hero_1.jpg
+            |   |   |   hero_1.png
+            |   |   |   icon.png
+            |   |   |   lapicero5.jpg
+            |   |   |   logo.png
+            |   |   |   Men.jpg
+            |   |   |   person_1.jpg
+            |   |   |   person_2.jpg
+            |   |   |   person_3.jpg
+            |   |   |   person_4.jpg
+            |   |   |   shoe.png
+            |   |   |   shoe_1.jpg
+            |   |   |   tempera-x-250-ml-rosado-faber-castell-16704011-default-1.jpg
+            |   |   |   Women.jpg
+            |   |   |   
+            |   |   \---icons
+            |   |           favicon.ico
+            |   |           icon-google.png
+            |   |           map-marker.png
+            |   |           symbol-01.png
+            |   |           
+            |   +---js
+            |   |       aos.js
+            |   |       bootstrap.min.js
+            |   |       jquery-3.3.1.min.js
+            |   |       jquery-ui.js
+            |   |       jquery.magnific-popup.min.js
+            |   |       main.js
+            |   |       owl.carousel.min.js
+            |   |       popper.min.js
+            |   |       slick.min.js
+            |   |       
+            |   +---nav
+            |   |       sinSession.jsp
+            |   |       usuarioEncabezado.jsp
+            |   |       
+            |   +---scss
+            |   |   |   .DS_Store
+            |   |   |   style.scss
+            |   |   |   _site-base.scss
+            |   |   |   _site-blocks.scss
+            |   |   |   _site-navbar.scss
+            |   |   |   
+            |   |   \---bootstrap
+            |   |       +---css
+            |   |       |       bootstrap-grid.css
+            |   |       |       bootstrap-grid.css.map
+            |   |       |       bootstrap-grid.min.css
+            |   |       |       bootstrap-grid.min.css.map
+            |   |       |       bootstrap-reboot.css
+            |   |       |       bootstrap-reboot.css.map
+            |   |       |       bootstrap-reboot.min.css
+            |   |       |       bootstrap-reboot.min.css.map
+            |   |       |       bootstrap.css
+            |   |       |       bootstrap.css.map
+            |   |       |       bootstrap.min.css
+            |   |       |       bootstrap.min.css.map
+            |   |       |       
+            |   |       \---js
+            |   |               bootstrap.bundle.js
+            |   |               bootstrap.bundle.js.map
+            |   |               bootstrap.bundle.min.js
+            |   |               bootstrap.bundle.min.js.map
+            |   |               bootstrap.js
+            |   |               bootstrap.js.map
+            |   |               bootstrap.min.js
+            |   |               bootstrap.min.js.map
+            |   |               
+            |   \---vendor
+            |       +---animate
+            |       |       animate.css
+            |       |       
+            |       +---animsition
+            |       |   +---css
+            |       |   |       animsition.css
+            |       |   |       animsition.min.css
+            |       |   |       
+            |       |   \---js
+            |       |           animsition.js
+            |       |           animsition.min.js
+            |       |           
+            |       +---bootstrap
+            |       |   +---css
+            |       |   |       bootstrap-grid.css
+            |       |   |       bootstrap-grid.css.map
+            |       |   |       bootstrap-grid.min.css
+            |       |   |       bootstrap-grid.min.css.map
+            |       |   |       bootstrap-reboot.css
+            |       |   |       bootstrap-reboot.css.map
+            |       |   |       bootstrap-reboot.min.css
+            |       |   |       bootstrap-reboot.min.css.map
+            |       |   |       bootstrap.css
+            |       |   |       bootstrap.css.map
+            |       |   |       bootstrap.min.css
+            |       |   |       bootstrap.min.css.map
+            |       |   |       
+            |       |   \---js
+            |       |           bootstrap.js
+            |       |           bootstrap.min.js
+            |       |           popper.js
+            |       |           popper.min.js
+            |       |           tooltip.js
+            |       |           
+            |       +---countdowntime
+            |       |       countdowntime.js
+            |       |       
+            |       +---css-hamburgers
+            |       |       hamburgers.css
+            |       |       hamburgers.min.css
+            |       |       
+            |       +---daterangepicker
+            |       |       daterangepicker.css
+            |       |       daterangepicker.js
+            |       |       moment.js
+            |       |       moment.min.js
+            |       |       
+            |       +---jquery
+            |       |       jquery-3.2.1.min.js
+            |       |       
+            |       +---perfect-scrollbar
+            |       |       perfect-scrollbar.css
+            |       |       perfect-scrollbar.min.js
+            |       |       
+            |       \---select2
+            |               select2.css
+            |               select2.js
+            |               select2.min.css
+            |               select2.min.js
+            |               
+            \---WEB-INF
+                    web.xml
+                    

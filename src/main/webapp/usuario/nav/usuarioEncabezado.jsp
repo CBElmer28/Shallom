@@ -1,3 +1,5 @@
+<%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Carro" %>
+<%Carro carro = (Carro) session.getAttribute("carro");%>
 <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
         <div class="container">
@@ -24,7 +26,7 @@
                   <li>
                     <a href="cart.html" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
+                      <span class="count"><%=carro.getItems().size()%></span>
                     </a>
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
