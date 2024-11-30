@@ -14,7 +14,7 @@
     <section id="sidebar" class="text-black">
         <a href="#" class="brand">
             <i class='bx bxs-cloud fs-3'></i>
-            <span class="fs-4 ms-2">AdminHub</span>
+            <span class="fs-4 ms-2">SHALOM</span>
         </a>
         <ul class="nav flex-column" id="t">
             <li class="nav-item" >
@@ -137,13 +137,18 @@
 					<div class="head">
 
 						<!-- Botones con íconos y colores específicos -->
-						<button class="icon-button excel" title="Exportar a Excel">
-							<i class="fas fa-file-excel"></i>
-						</button>
+                        <button class="icon-button excel" title="Exportar a Excel" onclick="exportarExcel()">
+                            <i class="fas fa-file-excel"></i>
+                        </button>
+                        <script>
+                            function exportarExcel() {
+                                window.location.href = "<%=request.getContextPath()%>/ExportarExcel";
+                            }
+                        </script>
 						<button class="icon-button pdf" title="Exportar a PDF">
 							<i class="fas fa-file-pdf"></i>
 						</button>
-						<button class="icon-button agregar" title="Agregar nuevo">
+						<button class="icon-button agregar" title="Agregar nuevo" data-bs-toggle="modal" data-bs-target="#addProductModal">
 							<i class="fas fa-plus-circle"></i>
 						</button>
 			
@@ -200,7 +205,7 @@
 		</main>
         
     </section>
-
+    <jsp:include page="modales.jsp"/>
     <script src="/webbs/admin/assets/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
