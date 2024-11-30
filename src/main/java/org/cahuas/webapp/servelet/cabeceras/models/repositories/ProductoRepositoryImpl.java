@@ -73,11 +73,10 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
     }
 
 
-
     @Override
     public void guardar(Producto producto) throws SQLException {
         String sql;
-        if ( producto.getId() > 0) {
+        if ( producto.getId() != null && producto.getId() > 0) {
             sql = "update productos set nom=?, cat=?, precio=?, stock=?, id_proveedor=?, ruta_imagen=? where id=?";
         } else {
             sql = "insert into productos (nom, cat, precio, stock, id_proveedor, ruta_imagen) values (?,?,?,?,?,?)";
@@ -90,7 +89,7 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
             stmt.setInt(5, producto.getId_proveedor().getId());//
             stmt.setString(6, producto.getRuta_imagen());
 
-            if ( producto.getId() > 0) {
+            if ( producto.getId() != null && producto.getId() > 0) {
                 stmt.setInt(7, producto.getId());
             }
             stmt.executeUpdate();

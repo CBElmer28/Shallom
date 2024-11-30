@@ -33,19 +33,11 @@ public class AgregarCarroServelet extends HttpServlet {
         }
         ProductoService service = new ProductoServiceJdbcImpl(conn);
         Optional<Producto> producto = service.porId(idd);
-        if (producto.isPresent()) {
+        if (producto.isPresent()){
             HttpSession session = req.getSession();
             Carro carro = (Carro) session.getAttribute("carro");
-            Optional<ItemCarro> optionalItem = carro.getItems().stream()
-                    .filter(i -> i.getProducto().getId() == idd)
-                    .findFirst();
-            if (optionalItem.isPresent()) {
-                ItemCarro itemExistente = optionalItem.get();
-                itemExistente.setCantidad(itemExistente.getCantidad() + cantidad);
-            } else {
-                ItemCarro nuevoItem = new ItemCarro(cantidad, producto.get());
-                carro.addItemCarro(nuevoItem);
-            }
+            ItemCarro nuevoItem = new ItemCarro(cantidad, producto.get());
+            carro.addItemCarro(nuevoItem);
         }else {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "NO EXISTEN PRODUCTO EN LA BASE DE DATOS");
         }

@@ -21,10 +21,10 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="/webbs/usuario/login.jsp"><span class="icon icon-person"></span></a></li>
+                  <li><a href="/webbs/usuario/configUsuario.jsp"><span class="icon icon-person"></span></a></li>
                   <li><a href="/webbs/logout"><span class="icon icon-input"></span></a></li>
                   <li>
-                    <a href="cart.html" class="site-cart">
+                    <a href="/webbs/usuario/cart.jsp" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count"><%=carro.getItems().size()%></span>
                     </a>

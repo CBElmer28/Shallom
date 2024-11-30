@@ -49,9 +49,16 @@
       <version>6.21.3</version>
     </dependency>
     <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.9.0</version>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.3.0</version>
+    </dependency>
+
+    <!-- Dependencia para trabajar con archivos Excel en formato: .xlsx -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.3.0</version>
     </dependency>
   </dependencies>
 

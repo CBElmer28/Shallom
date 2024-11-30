@@ -21,6 +21,7 @@ public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
     public UsuarioRepositoryJdbcImpl(Connection conn) {
         this.conn = conn;
     }
+
    private Usuario getUsuario(ResultSet rs) throws SQLException {
         Usuario p = new Usuario();
         p.setId(rs.getInt("id"));
@@ -116,18 +117,19 @@ public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
     
     
     @Override
-    public void editarCuenta(int dni, String usuario, String pass, String tipo) throws SQLException {
-    if (!usuarioExisten(dni)) {
-        throw new SQLException("El usuario con DNI " + dni + " no existe.");
-    }
-    String sql = "UPDATE usuarios SET user = ?, pass = ?, tipo = ? WHERE dni = ?";
-    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-        stmt.setString(1, usuario);  
-        stmt.setString(2, pass);     
-        stmt.setString(3, tipo);    
-        stmt.setInt(4, dni);       
-        stmt.executeUpdate(); 
-         }
+    public void editarCuenta(int id, int dni, String usuario, String pass, String tipo) throws SQLException {
+        if (!usuarioExisten(dni)) {
+            throw new SQLException("El usuario con DNI " + dni + " no existe.");
+        }
+        String sql = "UPDATE usuarios SET user = ?, pass = ?, tipo = ? WHERE id = ? AND dni = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, usuario);
+            stmt.setString(2, pass);
+            stmt.setString(3, tipo);
+            stmt.setInt(4, id);
+            stmt.setInt(5, dni);
+            stmt.executeUpdate();
+        }
     }
 
     @Override
