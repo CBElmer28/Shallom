@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
 <head>
@@ -34,18 +35,24 @@
                     </span>
 
 					<p class="text-center txt1 m-b-20" style="color: #666666;">
-						Por favor, ingresa tu nueva contraseña y confírmala para continuar.
+						Por favor, ingresa tu nueva contraseña y confírmala para continuar. (Tu contraseña debe tener almenos 8 caracteres, 1 letra y 1 número)
 					</p>
 
 					<%-- Mensaje de error si las contraseñas no coinciden --%>
 					<%
-						if (request.getAttribute("message") != null) {
-							out.print("<p class='text-danger text-center'>" + request.getAttribute("message") + "</p>");
+						String status = (String) request.getAttribute("status");
+						if ("passwordMismatch".equals(status)) {
+							out.print("<p class='text-danger text-center'>Las contraseñas no coinciden. Intenta nuevamente.</p>");
+						} else if ("resetFailed".equals(status)) {
+							out.print("<p class='text-danger text-center'>Ocurrió un error al restablecer la contraseña. Intenta nuevamente.</p>");
+						} else if ("resetSuccess".equals(status)) {
+							out.print("<p class='text-success text-center'>Contraseña restablecida con éxito. Inicia sesión con tu nueva contraseña.</p>");
 						}
 					%>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate="La contraseña es obligatoria">
-						<input class="input100" type="password" id="password" name="password" placeholder="Nueva Contraseña" required>
+						<input class="input100" type="password" id="password" name="password" placeholder="Nueva Contraseña" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Debes confirmar tu contraseña">
@@ -73,8 +80,17 @@
 </div>
 
 <div id="dropDownSelect1"></div>
-	<script type='text/javascript'
-		src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+
+<script src="usuario/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="usuario/vendor/animsition/js/animsition.min.js"></script>
+<script src="usuario/vendor/bootstrap/js/popper.js"></script>
+<script src="usuario/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="usuario/vendor/select2/select2.min.js"></script>
+<script src="usuario/vendor/daterangepicker/moment.min.js"></script>
+<script src="usuario/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="usuario/vendor/countdowntime/countdowntime.js"></script>
+<script src="usuario/js/aos.js"></script>
+<script src="usuario/js/main.js"></script>
 	
 </body>
 </html>
