@@ -6,6 +6,7 @@ import org.cahuas.webapp.servelet.cabeceras.models.modelo.Proveedor;
 import java.util.List;
 import java.util.Optional;
 
+
 public interface ProductoService {
     List<Producto> listar();
 
