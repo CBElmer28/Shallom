@@ -40,20 +40,42 @@ public class ForgotPassword extends HttpServlet {
 			props.put("mail.smtp.port", "465");
 			Session session = Session.getDefaultInstance(props, new jakarta.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("sotojonathan070@gmail.com", "llljkfuggppccbdy");
+					return new PasswordAuthentication("shalomoficial12@gmail.com", "vvyhyxukcysumxcd");
 
 				}
 			});
 			// compose message
 			try {
 				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress(email));// change accordingly
+				message.setFrom(new InternetAddress(email));
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-				message.setSubject("Codigo de recuperación de contraseña");
-				message.setText("Tu código es: " + otpvalue);
+				message.setSubject("Codigo de recuperación de tu cuenta - Shalom");
+				// Mensaje en formato HTML para mayor personalización
+				String htmlMessage = "<!DOCTYPE html>"
+						+ "<html>"
+						+ "<head>"
+						+ "<style>"
+						+ "body { font-family: Arial, sans-serif; line-height: 1.6; }"
+						+ ".header { font-size: 24px; color: #333; }"
+						+ ".code { font-size: 20px; color: #0056b3; font-weight: bold; }"
+						+ ".footer { font-size: 14px; color: #777; margin-top: 20px; }"
+						+ "</style>"
+						+ "</head>"
+						+ "<body>"
+						+ "<p class='header'>Hola,</p>"
+						+ "<p>Recibimos una solicitud para recuperar la contraseña de tu cuenta asociada al correo: <strong>" + email + "</strong>.</p>"
+						+ "<p>Por favor, utiliza el siguiente código para continuar con el proceso de recuperación:</p>"
+						+ "<p class='code'>" + otpvalue + "</p>"
+						+ "<p>Si no solicitaste este cambio, ignora este mensaje. Tu cuenta está segura.</p>"
+						+ "<p class='footer'>Atentamente,<br>El equipo de Tu Empresa</p>"
+						+ "</body>"
+						+ "</html>";
+
+				message.setContent(htmlMessage, "text/html; charset=utf-8");
+
 				// send message
 				Transport.send(message);
-				System.out.println("message sent successfully");
+				System.out.println("Correo enviado con éxito");
 			}
 
 			catch (MessagingException e) {
