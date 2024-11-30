@@ -11,16 +11,15 @@ public class Carro {
     }
 
     public void addItemCarro(ItemCarro itemCarro) {
-        if (items.contains(itemCarro)) {
-            Optional<ItemCarro> optionalItemCarro = items.stream()
-                    .filter(i -> i.equals(itemCarro))
-                    .findAny();
-            if (optionalItemCarro.isPresent()) {
-                ItemCarro i = optionalItemCarro.get();
-                i.setCantidad(i.getCantidad()+1);
-            }
+        Optional<ItemCarro> existingItem = items.stream()
+                .filter(i -> i.getProducto().getId().equals(itemCarro.getProducto().getId()))
+                .findFirst();
+
+        if (existingItem.isPresent()) {
+            ItemCarro existing = existingItem.get();
+            existing.setCantidad(existing.getCantidad() + itemCarro.getCantidad());
         } else {
-            this.items.add(itemCarro);
+            items.add(itemCarro);
         }
     }
     public List<ItemCarro> getItems() {
@@ -74,7 +73,7 @@ public class Carro {
 
     public List<DatalleProducto> getDetalleProductos() {
         List<DatalleProducto> productos = new ArrayList<>();
-        for (ItemCarro itemCarro : items) {
+        for (ItemCarro itemCarro : this.getItems()) {
             String nom= itemCarro.getProducto().getNom();
             Integer cantidad= itemCarro.getCantidad();
             Integer pUnitario = itemCarro.getProducto().getPrecio();

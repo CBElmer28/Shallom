@@ -59,9 +59,9 @@ public class LoginServiceJdbcImpl implements LoginService{
     }
 
     @Override
-    public void editarCuenta(int dni, String usuario, String pass, String tipo) throws SQLException {
+    public void editarCuenta(int id,int dni, String usuario, String pass, String tipo) throws SQLException {
       try {
-            UsuarioRepository.editarCuenta(dni, usuario, pass, tipo);
+            UsuarioRepository.editarCuenta(id,dni, usuario, pass, tipo);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }

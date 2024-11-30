@@ -12,7 +12,8 @@ public class DatalleProducto {
         this.pUnitario = pUnitario;
         this.totalproduc = totalproductoo;
     }
-
+    public DatalleProducto() {
+    }
     public String getNom() {
         return nom;
     }

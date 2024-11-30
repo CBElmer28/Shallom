@@ -1,6 +1,8 @@
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario" %>
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Carro" %>
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.ItemCarro" %>
+<%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.DatalleProducto" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <% Usuario usu =(Usuario)session.getAttribute("usuario");%>
 <%Carro carro = (Carro) session.getAttribute("carro");%>
