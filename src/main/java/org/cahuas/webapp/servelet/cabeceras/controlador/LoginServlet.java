@@ -12,9 +12,11 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Producto;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
 import org.cahuas.webapp.servelet.cabeceras.models.services.*;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
@@ -33,6 +35,13 @@ public class LoginServlet extends HttpServlet {
         if (ne != null && ne.getUser().equals(username) && ne.getPass().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
+            session.setAttribute("usuario", ne);
+
+            // Cargar el historial de compras
+            PedidoServiceJdbcImpl pedidoService = new PedidoServiceJdbcImpl(conn);
+            List<Producto> historialCompras = pedidoService.obtenerHistorialCompras(ne.getId());
+            session.setAttribute("historialCompras", historialCompras);
+
             if ("admin".equals(ne.getTipo())) {
                 resp.sendRedirect(req.getContextPath() + "/admin/index.jsp");
             } else if ("empleado".equals(ne.getTipo())) {
@@ -48,6 +57,4 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/usuario/index.jsp");
         }
        }
-
-   
 }
