@@ -1,4 +1,6 @@
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario" %>
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Carro" %>
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.ItemCarro" %>
@@ -41,6 +43,7 @@
   <nav class="site-navigation text-right text-md-center" role="navigation">
     <div class="container">
       <ul class="site-menu js-clone-nav d-none d-md-block">
+
         <li class="active">
           <a href="index.jsp">INICIO</a>
         </li>
@@ -50,6 +53,7 @@
         <li class="active"><a href="/webbs/usuario/productos">TIENDA</a></li>
         <li><a href="contact.jsp">CONTÁCTANOS</a></li>
         <li><a href="Historial.jsp">HISTORIAL</a></li>
+
       </ul>
     </div>
   </nav>

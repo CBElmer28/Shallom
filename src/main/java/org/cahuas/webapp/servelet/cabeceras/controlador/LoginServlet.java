@@ -22,9 +22,8 @@ import org.cahuas.webapp.servelet.cabeceras.models.modelo.Venta;
 import org.cahuas.webapp.servelet.cabeceras.models.services.*;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
-@WebServlet(name = "login", urlPatterns = {"/login"})
+@WebServlet(name = "login", urlPatterns = {"/login"}) // /producto
 public class LoginServlet extends HttpServlet {
-
       @Override
        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String username = req.getParameter("username");
@@ -33,8 +32,10 @@ public class LoginServlet extends HttpServlet {
             Connection conn = ConexionBaseDatos.getConnection();
             LoginServiceJdbcImpl usu = new LoginServiceJdbcImpl(conn);
             Usuario ne =usu.UsuarioSesion(username, password);
+            //conn.commit();
         if (ne != null && ne.getUser().equals(username) && ne.getPass().equals(password)) {
             HttpSession session = req.getSession();
+
             session.setAttribute("username", username);
             session.setAttribute("usuario", ne);
 
@@ -54,7 +55,9 @@ public class LoginServlet extends HttpServlet {
             }
         } else {
             // REDIRIGE AL LOGIN
+
             resp.sendRedirect(req.getContextPath() + "/usuario/login.jsp");
+
         }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -48,16 +48,12 @@
                     </div>
 
                     <div class="flex-sb-m w-full p-t-3 p-b-24">
-                        <div class="contact100-form-checkbox">
-                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me-checkbox">
-                            <label class="label-checkbox100" for="ckb1">
-                                Remember me
-                            </label>
-                        </div>
 
                         <div>
+
                             <a href="/webbs/usuario/forgotpassword.jsp" class="txt1">
                                 Forgot?
+
                             </a>
                         </div>
                     </div>
@@ -72,11 +68,11 @@
 
             <div class="text-center">
                 <p class="txt1" style="color: #999999">
-                    Don't have an account?
+                    aun no creaste tu cuenta?
                     <a href="register.jsp" class="txt1">
-                        Create here
+                        Crea aqui
                     </a>
-                    <<p></p>
+                    <p></p>
                     <a href="/webbs/usuario/index.jsp" class="txt1">
                         regresar
                     </a>

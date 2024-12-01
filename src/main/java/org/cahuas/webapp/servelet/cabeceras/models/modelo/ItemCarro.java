@@ -32,8 +32,12 @@ public class ItemCarro {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemCarro itemCarro = (ItemCarro) o;
-        return Objects.equals(producto.getId(), itemCarro.producto.getId())
-                && Objects.equals(producto.getNom(), itemCarro.producto.getNom());
+        return producto.getId().equals(itemCarro.getProducto().getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(producto.getId());
     }
 
     public int getImporte() {

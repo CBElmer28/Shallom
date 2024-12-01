@@ -6,6 +6,7 @@ package org.cahuas.webapp.servelet.cabeceras.models.repositories;
 
 import java.sql.SQLException;
 
+
 public interface RepositoryUsuario<T> {
     T UsuarioporId(int id) throws SQLException;
 
@@ -18,5 +19,6 @@ public interface RepositoryUsuario<T> {
     void editarCuenta(int id,int dni,String usuario,String pass,String tipo)throws SQLException;
 
     void eliminarUsuario(int dni)throws SQLException;
+
 
 }

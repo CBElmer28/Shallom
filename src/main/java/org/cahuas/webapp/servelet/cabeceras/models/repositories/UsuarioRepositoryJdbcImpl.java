@@ -18,7 +18,9 @@ public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
         this.conn = conn;
     }
 
+
     private Usuario getUsuario(ResultSet rs) throws SQLException {
+
         Usuario p = new Usuario();
         p.setId(rs.getInt("id"));
         p.setDni(rs.getInt("dni"));

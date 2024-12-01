@@ -18,7 +18,9 @@ public class ClienteRepositoryJdbcImpl implements RepositoryCliente<Cliente> {
     public Cliente ClienteporId(int id) throws SQLException {
         String query = "SELECT * FROM clientes WHERE id = ?";
         try (
+
                 PreparedStatement statement = conn.prepareStatement(query)) {
+
 
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -40,7 +42,9 @@ public class ClienteRepositoryJdbcImpl implements RepositoryCliente<Cliente> {
     public Cliente existeCliente(String username) {
         String query = "SELECT * FROM clientes WHERE nombre = ?";
         try (
+
                 PreparedStatement statement = conn.prepareStatement(query)) {
+
 
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
