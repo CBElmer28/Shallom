@@ -1,12 +1,6 @@
 
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario" %>
-<%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Cliente" %><%--
-  Created by IntelliJ IDEA.
-  User: keyen
-  Date: 29/11/2024
-  Time: 15:33
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Cliente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Usuario usu =(Usuario)session.getAttribute("usuario");%>
 
@@ -44,47 +38,45 @@
             <div class="wrap-login100 p-t-50 p-b-90">
                 <form action="/webbs/config" method="post" class="login100-form validate-form flex-sb flex-w">
                     <span class="login100-form-title p-b-51">
-                        Registro
+                        Configuración del Usuario
                     </span>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Username es requerido">
-                        <input class="input100" type="text" id="nombre" name="nombre" placeholder="<%=c.getNombre()%>">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Nombre es requerido">
+                        <input class="input100" type="text" id="nombre" name="nombre" value="<%=c.getNombre()%>">
                     </div>
-
+                    <label for="nombre" class="form-label">Usuario:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="User es requerido">
-                        <input class="input100" type="text" id="user" name="user" placeholder="<%=usu.getUser()%>">
+                        <input class="input100" type="text" id="user" name="user" value="<%=usu.getUser()%>">
                     </div>
-
+                    <label for="nombre" class="form-label">Correo Electrónico:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="email" id="correo" name="correo" placeholder="<%=c.getCo()%>">
+                        <input class="input100" type="email" id="correo" name="correo" value="<%=c.getCo()%>">
                     </div>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="number" id="telefono" name="telefono" placeholder="<%=c.getTel()%>">
+                    <label for="nombre" class="form-label">Celular:</label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="telefono es requerido">
+                        <input class="input100" type="number" id="telefono" name="telefono" value="<%=c.getTel()%>">
                     </div>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="number" id="DNI" name="DNI" placeholder="<%=usu.getDni()%>">
+                    <label for="nombre" class="form-label">DNI:</label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="DNI es requerido">
+                        <input class="input100" type="number" id="DNI" name="DNI" value="<%=usu.getDni()%>">
                     </div>
-
+                    <label for="nombre" class="form-label">Contraseña</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" id="password" placeholder="<%=usu.getPass()%>">
+                        <input class="input100" type="password" name="password" id="password" value="<%=usu.getPass()%>">
                     </div>
 
 
                     <div class="container-login100-form-btn m-t-17">
                         <button type="submit" class="login100-form-btn">
-                            configurar
+                            Confirmar Cambios
                         </button>
                     </div>
                 </form>
-            </div>
-
-            <div class="text-center">
-                <a href="/webbs/usuario/index.jsp" class="txt1">
-                    regresar
-                </a>
-                </p>
+                <div class="text-center">
+                    <a href="/webbs/usuario/index.jsp" class="txt1">
+                        Regresar
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -146,3 +138,4 @@
 
 </body>
 </html>
+

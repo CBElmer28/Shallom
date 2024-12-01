@@ -12,11 +12,13 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Cliente;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Venta;
 import org.cahuas.webapp.servelet.cabeceras.models.services.*;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
@@ -33,7 +35,15 @@ public class LoginServlet extends HttpServlet {
             //conn.commit();
         if (ne != null && ne.getUser().equals(username) && ne.getPass().equals(password)) {
             HttpSession session = req.getSession();
-            session.setAttribute("username", ne.getUser());
+
+            session.setAttribute("username", username);
+            session.setAttribute("usuario", ne);
+
+            // Cargar el historial de ventas
+            VentaServiceJdbcImpl ventaService = new VentaServiceJdbcImpl(conn);
+            List<Venta> historialVentas = ventaService.obtenerHistorialVentas(ne.getId());
+            session.setAttribute("historialCompras", historialVentas);
+
             if ("admin".equals(ne.getTipo())) {
                 resp.sendRedirect(req.getContextPath() + "/admin/index.jsp");
             } else if ("usu".equals(ne.getTipo())) {
@@ -45,11 +55,13 @@ public class LoginServlet extends HttpServlet {
             }
         } else {
             // REDIRIGE AL LOGIN
-            resp.sendRedirect(req.getContextPath()+"/usuario/login.jsp");
+
+            resp.sendRedirect(req.getContextPath() + "/usuario/login.jsp");
+
         }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-            resp.sendRedirect(req.getContextPath()+"/usuario/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/usuario/index.jsp");
         }
       }
 }

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Shalom &mdash; Colorlib e-Commerce Template</title>
+    <title>Shalom &mdash; Inicio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
@@ -32,32 +32,15 @@
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
+            <li class="active">
               <a href="index.jsp">INICIO</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
             </li>
-            <li class="has-children">
-              <a href="about.html">NOSOTROS</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
+            <li>
+              <a href="about.jsp">NOSOTROS</a>
             </li>
             <li><a href="/webbs/usuario/productos">TIENDA</a></li>
             <li><a href="contact.jsp">CONTÁCTANOS</a></li>
+            <li><a href="Historial.jsp">HISTORIAL</a></li>
           </ul>
         </div>
       </nav>
@@ -166,7 +149,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/tempera-x-250-ml-rosado-faber-castell-16704011-default-1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/tempera.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Tempera</a></h3>
@@ -190,7 +173,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/faber-castell-boligrafo-032-m-trilux-x-12-surt-343211-33748-default-1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/lapicero.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Boligrafo</a></h3>
@@ -313,7 +296,6 @@
 
       </div>
     </footer>
-  </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
@@ -322,7 +304,6 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
   <script src="js/main.js"></script>
 
   </body>

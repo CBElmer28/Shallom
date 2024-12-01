@@ -36,12 +36,16 @@ public class ClienteServiceJdbcImpl implements ClienteService {
 
     @Override
     public void editarCliente(int id,String co, int tel, int id_usuario, String nombre) throws SQLException {
-       repositoycliente.editarCliente(id,co, tel, id_usuario, nombre);
+
+        repositoycliente.editarCliente(id,co, tel, id_usuario, nombre);
+
     }
 
     @Override
     public Cliente buscarPorUsuarioId(int id) throws SQLException {
-      return  repositoycliente.buscarPorUsuarioId(id);
+
+        return  repositoycliente.buscarPorUsuarioId(id);
+
     }
 
 }

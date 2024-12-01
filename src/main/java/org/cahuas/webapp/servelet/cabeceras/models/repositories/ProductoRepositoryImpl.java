@@ -104,5 +104,4 @@ public class ProductoRepositoryImpl implements Repository<Producto>{
             stmt.executeUpdate();
         }
     }
-
 }

@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: keyen
-  Date: 26/11/2024
-  Time: 14:44
-  To change this template use File | Settings | File Templates.
---%>
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +7,7 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/images/men.jpg"/>
+    <link rel="icon" type="image/png" href="/images/Men.jpg"/>
     <link rel="stylesheet" type="text/css" href="scss/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -142,3 +137,4 @@
 
 </body>
 </html>
+

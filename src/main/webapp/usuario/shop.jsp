@@ -27,6 +27,7 @@
 
 </head>
 <body>
+<div class="site-wrap">
 <% if(usu == null ||usu.getUser().isEmpty()){%>
 <jsp:include page="nav/sinSession.jsp"/>
 <%}else{%>
@@ -36,38 +37,21 @@
         </div>
       </div>
     </div>
-    <nav class="site-navigation text-right text-md-center" role="navigation">
-      <div class="container">
-        <ul class="site-menu js-clone-nav d-none d-md-block">
-          <li class="has-children">
-            <a href="index.jsp">INICIO</a>
-            <ul class="dropdown">
-              <li><a href="#">Menu One</a></li>
-              <li><a href="#">Menu Two</a></li>
-              <li><a href="#">Menu Three</a></li>
-              <li class="has-children">
-                <a href="#">Sub Menu</a>
-                <ul class="dropdown">
-                  <li><a href="#">Menu One</a></li>
-                  <li><a href="#">Menu Two</a></li>
-                  <li><a href="#">Menu Three</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="has-children">
-            <a href="about.html">NOSOTROS</a>
-            <ul class="dropdown">
-              <li><a href="#">Menu One</a></li>
-              <li><a href="#">Menu Two</a></li>
-              <li><a href="#">Menu Three</a></li>
-            </ul>
-          </li>
-          <li class="active"><a href="/webbs/usuario/productos">TIENDA</a></li>
-          <li><a href="contact.jsp">CONTÁCTANOS</a></li>
-        </ul>
-      </div>
-    </nav>
+<nav class="site-navigation text-right text-md-center" role="navigation">
+  <div class="container">
+    <ul class="site-menu js-clone-nav d-none d-md-block">
+      <li>
+        <a href="index.jsp">INICIO</a>
+      </li>
+      <li>
+        <a href="about.jsp">NOSOTROS</a>
+      </li>
+      <li class="active"><a href="/webbs/usuario/productos">TIENDA</a></li>
+      <li><a href="contact.jsp">CONTÁCTANOS</a></li>
+      <li><a href="Historial.jsp">HISTORIAL</a></li>
+    </ul>
+  </div>
+</nav>
   </header>
 
   <div class="bg-light py-3">

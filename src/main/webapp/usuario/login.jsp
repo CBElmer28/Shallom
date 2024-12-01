@@ -1,4 +1,4 @@
-
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,8 +50,10 @@
                     <div class="flex-sb-m w-full p-t-3 p-b-24">
 
                         <div>
-                            <a href="#" class="txt1">
-                                olvidaste?
+
+                            <a href="/webbs/usuario/forgotpassword.jsp" class="txt1">
+                                Forgot?
+
                             </a>
                         </div>
                     </div>

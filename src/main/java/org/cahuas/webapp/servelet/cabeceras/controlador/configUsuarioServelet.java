@@ -56,7 +56,9 @@ public class configUsuarioServelet extends HttpServlet {
             LoginServiceJdbcImpl usuario = new LoginServiceJdbcImpl(conn);
             Usuario nuevo = (Usuario)session.getAttribute("usuario");
             String t="usu";
-             usuario.editarCuenta(nuevo.getId(),dni,user,password,t);
+
+            usuario.editarCuenta(nuevo.getId(),dni,user,password,t);
+
             conn.commit();
             Cliente c = (Cliente)session.getAttribute("cliente");
             pro.editarCliente(c.getId(),correo,telefono,nuevo.getId(),username);

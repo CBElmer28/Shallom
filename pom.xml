@@ -9,6 +9,32 @@
   <url>http://maven.apache.org</url>
 
   <dependencies>
+    <!-- Dependencias para enviar email con el codigo de recuperación -->
+    <dependency>
+      <groupId>jakarta.mail</groupId>
+      <artifactId>jakarta.mail-api</artifactId>
+      <version>2.1.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jakarta.activation</groupId>
+      <artifactId>jakarta.activation-api</artifactId>
+      <version>2.1.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.angus</groupId>
+      <artifactId>angus-mail</artifactId>
+      <version>2.0.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.angus</groupId>
+      <artifactId>angus-activation</artifactId>
+      <version>2.0.2</version>
+    </dependency>
+    <!--________________________________________ -->
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
