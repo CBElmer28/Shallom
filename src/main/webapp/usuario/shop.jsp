@@ -27,11 +27,13 @@
 
 </head>
 <body>
+<div class="site-wrap">
 <% if(usu == null ||usu.getUser().isEmpty()){%>
 <jsp:include page="nav/sinSession.jsp"/>
 <%}else{%>
 <jsp:include page="nav/usuarioEncabezado.jsp"/>
 <%}%>
+
 
 </div>
 </div>
@@ -43,11 +45,14 @@
       <li><a href="about.jsp" style="color: black; margin-left: 20px;">NOSOTROS</a></li>
       <li><a href="/webbs/usuario/productos" style="margin-left: 20px">TIENDA</a></li>
       <li><a href="contact.jsp">CONTACTANOS</a></li>
+
       <li><a href="Historial.jsp">HISTORIAL</a></li>
     </ul>
   </div>
 </nav>
+
 </header>
+
 
 <div class="bg-light py-3">
   <div class="container">
@@ -89,6 +94,8 @@
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
         <div class="row mb-5">

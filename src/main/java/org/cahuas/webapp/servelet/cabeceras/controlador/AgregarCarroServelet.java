@@ -19,15 +19,18 @@ public class AgregarCarroServelet extends HttpServlet {
 
         // Crear servicio de productos utilizando la conexión a la base de datos
         ProductoService service = new ProductoServiceJdbcImpl(conn);
+
         
         // Recuperar el producto desde la base de datos mediante su id
         Optional<Producto> producto = service.porId(idd); 
         if (producto.isPresent()) {  // Verificar si el producto existe
             // Recuperar la sesión actual del usuario
+
             HttpSession session = req.getSession();
             
             // Recuperar el carrito de compras de la sesión
             Carro carro = (Carro) session.getAttribute("carro");
+
 
             // Buscar si el producto ya está en el carrito
             Optional<ItemCarro> optionalItem = carro.getItems().stream()
@@ -43,6 +46,7 @@ public class AgregarCarroServelet extends HttpServlet {
             }
         } else {
             // En caso de que no exista el producto en la base de datos, enviar un error HTTP 400 (Bad Request)
+
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "NO EXISTEN PRODUCTO EN LA BASE DE DATOS");
         }
 

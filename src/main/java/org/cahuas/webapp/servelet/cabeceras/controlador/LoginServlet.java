@@ -12,16 +12,18 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Cliente;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Venta;
 import org.cahuas.webapp.servelet.cabeceras.models.services.*;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
-@WebServlet(name = "login", urlPatterns = {"/login"})
+@WebServlet(name = "login", urlPatterns = {"/login"}) // /producto
 public class LoginServlet extends HttpServlet {
-
       @Override
        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String username = req.getParameter("username");
@@ -30,24 +32,36 @@ public class LoginServlet extends HttpServlet {
             Connection conn = ConexionBaseDatos.getConnection();
             LoginServiceJdbcImpl usu = new LoginServiceJdbcImpl(conn);
             Usuario ne =usu.UsuarioSesion(username, password);
+            //conn.commit();
         if (ne != null && ne.getUser().equals(username) && ne.getPass().equals(password)) {
             HttpSession session = req.getSession();
+
             session.setAttribute("username", username);
+            session.setAttribute("usuario", ne);
+
+            // Cargar el historial de ventas
+            VentaServiceJdbcImpl ventaService = new VentaServiceJdbcImpl(conn);
+            List<Venta> historialVentas = ventaService.obtenerHistorialVentas(ne.getId());
+            session.setAttribute("historialCompras", historialVentas);
+
             if ("admin".equals(ne.getTipo())) {
                 resp.sendRedirect(req.getContextPath() + "/admin/index.jsp");
-            } else if ("empleado".equals(ne.getTipo())) {
+            } else if ("usu".equals(ne.getTipo())) {
+                ClienteServiceJdbcImpl cli = new ClienteServiceJdbcImpl(conn);
+                Cliente c = cli.buscarPorUsuarioId(ne.getId());
                 session.setAttribute("usuario", ne);
+                session.setAttribute("cliente", c);
                 resp.sendRedirect(req.getContextPath() + "/usuario/index.jsp");
             }
         } else {
             // REDIRIGE AL LOGIN
-            resp.sendRedirect(req.getContextPath()+"/usuario/login.jsp");
-            }
+
+            resp.sendRedirect(req.getContextPath() + "/usuario/login.jsp");
+
+        }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-            resp.sendRedirect(req.getContextPath()+"/usuario/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/usuario/index.jsp");
         }
-       }
-
-   
+      }
 }

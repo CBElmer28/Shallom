@@ -1,7 +1,7 @@
 package org.cahuas.webapp.servelet.cabeceras.models.modelo;
 
 public class Producto {
-    private int id;
+    private Integer id;
     private String nom;
     private String cat;
     private int precio;
@@ -10,7 +10,7 @@ public class Producto {
     private Proveedor id_proveedor;
     private String ruta_imagen;
 
-    public Producto(int id, String nom, String cat, int precio,String proveedor, int stock, String ruta_imagen) {
+    public Producto(Integer id, String nom, String cat, int precio,String proveedor, int stock, String ruta_imagen) {
         this.id = id;
         this.nom = nom;
         this.cat = cat;
@@ -33,11 +33,11 @@ public class Producto {
     public Producto() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

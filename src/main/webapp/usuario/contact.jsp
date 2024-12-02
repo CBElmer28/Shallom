@@ -25,11 +25,13 @@
 
 </head>
 <body>
+<div class="site-wrap">
 <% if(usu == null ||usu.getUser().isEmpty()){%>
 <jsp:include page="nav/sinSession.jsp"/>
 <%}else{%>
 <jsp:include page="nav/usuarioEncabezado.jsp"/>
 <%}%>
+
 
 </div>
 </div>

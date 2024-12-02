@@ -2,6 +2,7 @@
 <% Usuario usu =(Usuario)session.getAttribute("usuario");%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Shalom &mdash; Colorlib e-Commerce Template</title>
   <meta charset="utf-8">
@@ -18,6 +19,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 
 <div class="site-wrap">
   <% if(usu == null ||usu.getUser().isEmpty()){%>
@@ -64,6 +66,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="site-section site-section-sm site-blocks-1">
@@ -186,6 +189,7 @@
               </div>
             </div>
           </div>
+
           <div class="item">
             <div class="block-4 text-center">
               <figure class="block-4-image">
@@ -195,6 +199,7 @@
                 <h3><a href="#">Plumones</a></h3>
                 <p class="mb-0">Plumón Arti Creativo Jumbo Mamut X 12 Und</p>
                 <p class="text-primary font-weight-bold">S/. 15.00</p>
+
               </div>
             </div>
           </div>
@@ -298,6 +303,7 @@
           </form>
         </div>
       </div>
+
     </div>
   </div>
 </footer>
@@ -312,6 +318,7 @@
 <script src="js/aos.js"></script>
 
 <script src="js/main.js"></script>
+
 
 </body>
 </html>
