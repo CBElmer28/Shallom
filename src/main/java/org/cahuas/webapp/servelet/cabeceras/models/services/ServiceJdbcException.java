@@ -4,10 +4,6 @@
  */
 package org.cahuas.webapp.servelet.cabeceras.models.services;
 
-/**
- *
- * @author keyen
- */
 public class ServiceJdbcException extends RuntimeException{
      public ServiceJdbcException(String message) {
         super(message);

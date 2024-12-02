@@ -1,6 +1,6 @@
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
-import com.google.gson.Gson;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,18 +37,14 @@ public class ExportarBoletaServelet extends HttpServlet {
 
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("logoEmpresa", logoEmpresa);
-            Gson gson = new Gson();
-            // Usa la lista de DetalleProductoDTO en lugar de los items del carro
-            List<DatalleProducto> detallesReporte = carro.getDetalleProductos();
-            //detallesReporte.addAll(carro.getDetalleProductos());
-            detallesReporte.add(new DatalleProducto(5,"keyen",6,7));
-            //DatalleProducto[] detallesArray = detallesReporte.toArray(new DatalleProducto[0]);
-          //  DatalleProducto[] detallesArray = {new DatalleProducto("hola",10,15,20)};
-              JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteProducto);
 
+            // Usa la lista de DetalleProductoDTO en lugar de los items del carro
+            List<DatalleProducto> detallesReporte = new ArrayList<>();
+            detallesReporte.add(new DatalleProducto());
+            detallesReporte.addAll(carro.getDetalleProductos());
             JRBeanArrayDataSource ds = new JRBeanArrayDataSource(detallesReporte.toArray());
             parameters.put("ds", ds);
-           // parameters.put("keyen", keyen);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteProducto);
             JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, ds);
             resp.setContentType("application/pdf");
             resp.setHeader("Content-Disposition", "inline; filename=boleta.pdf");

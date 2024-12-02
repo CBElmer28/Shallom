@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
 	<section id="sidebar" class="text-black">
         <a href="#" class="brand">
             <i class='bx bxs-cloud fs-3'></i>
-            <span class="fs-4 ms-2">AdminHub</span>
+            <span class="fs-4 ms-2">SHALOM</span>
         </a>
         <ul class="nav flex-column" id="t">
             <li class="nav-item" id="actives">

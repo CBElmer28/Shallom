@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.cahuas.webapp.servelet.cabeceras.models.services;
 
 import java.sql.Connection;
@@ -10,12 +6,8 @@ import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
 import org.cahuas.webapp.servelet.cabeceras.models.repositories.RepositoryUsuario;
 import org.cahuas.webapp.servelet.cabeceras.models.repositories.UsuarioRepositoryJdbcImpl;
 
-/**
- *
- * @author keyen
- */
 public class LoginServiceJdbcImpl implements LoginService{
-    
+
     private final RepositoryUsuario<Usuario> UsuarioRepository;
 
     public LoginServiceJdbcImpl(Connection connection) {
@@ -24,8 +16,8 @@ public class LoginServiceJdbcImpl implements LoginService{
 
     @Override
     public Usuario UsuarioporId(int id) throws SQLException {
-      try {
-           return UsuarioRepository.UsuarioporId(id);
+        try {
+            return UsuarioRepository.UsuarioporId(id);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
@@ -34,7 +26,7 @@ public class LoginServiceJdbcImpl implements LoginService{
     @Override
     public Usuario UsuarioSesion(String username, String password) throws SQLException {
         try {
-           return UsuarioRepository.UsuarioSesion(username, password);
+            return UsuarioRepository.UsuarioSesion(username, password);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
@@ -59,9 +51,11 @@ public class LoginServiceJdbcImpl implements LoginService{
     }
 
     @Override
-    public void editarCuenta(int dni, String usuario, String pass, String tipo) throws SQLException {
-      try {
-            UsuarioRepository.editarCuenta(dni, usuario, pass, tipo);
+    public void editarCuenta(int id,int dni, String usuario, String pass, String tipo) throws SQLException {
+
+        try {
+
+            UsuarioRepository.editarCuenta(id,dni, usuario, pass, tipo);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
@@ -69,11 +63,11 @@ public class LoginServiceJdbcImpl implements LoginService{
 
     @Override
     public void eliminarUsuario(int dni) throws SQLException {
-       try {
+        try {
             UsuarioRepository.eliminarUsuario(dni);
         } catch (SQLException throwables) {
             throw new ServiceJdbcException(throwables.getMessage(), throwables.getCause());
         }
     }
-    
+
 }
