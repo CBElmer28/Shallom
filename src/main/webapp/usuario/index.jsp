@@ -149,7 +149,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/tempera.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/tempera-x-250-ml-rosado-faber-castell-16704011-default-1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Tempera</a></h3>
@@ -173,7 +173,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/lapicero.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/faber-castell-boligrafo-032-m-trilux-x-12-surt-343211-33748-default-1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Boligrafo</a></h3>
@@ -305,5 +305,6 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
   <script src="js/main.js"></script>
+
   </body>
 </html>

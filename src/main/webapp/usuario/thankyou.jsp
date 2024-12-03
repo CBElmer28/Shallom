@@ -33,7 +33,7 @@
   <nav class="site-navigation text-right text-md-center" role="navigation">
     <div class="container">
       <ul class="site-menu js-clone-nav d-none d-md-block">
-        <li class="active">
+        <li>
           <a href="index.jsp">INICIO</a>
         </li>
         <li>
@@ -62,7 +62,7 @@
             <span class="icon-check_circle display-3 text-success"></span>
             <h2 class="display-3 text-black">GRACIAS!</h2>
             <p class="lead mb-5">Tu orden fue realizada con éxito.</p>
-            <p><a href="shop.jsp" class="btn btn-sm btn-primary">Volver a la Tienda</a></p>
+            <p><a href="/webbs/usuario/productos" class="btn btn-sm btn-primary">Volver a la Tienda</a></p>
           </div>
         </div>
       </div>

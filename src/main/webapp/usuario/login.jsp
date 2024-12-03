@@ -40,20 +40,18 @@
                   
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-                        <input class="input100" type="text" id="username" name="username" placeholder="Username">
+                        <input class="input100" type="text" id="username" name="username" placeholder="Usuario">
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" id="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" id="password" placeholder="Contraseña">
                     </div>
 
                     <div class="flex-sb-m w-full p-t-3 p-b-24">
 
                         <div>
-
                             <a href="/webbs/usuario/forgotpassword.jsp" class="txt1">
-                                Forgot?
-
+                                Olvidaste?
                             </a>
                         </div>
                     </div>
@@ -68,11 +66,11 @@
 
             <div class="text-center">
                 <p class="txt1" style="color: #999999">
-                    aun no creaste tu cuenta?
+                    aun no tienes cuenta?
                     <a href="register.jsp" class="txt1">
-                        Crea aqui
+                        Create aqui
                     </a>
-                    <p></p>
+                    <<p></p>
                     <a href="/webbs/usuario/index.jsp" class="txt1">
                         regresar
                     </a>
