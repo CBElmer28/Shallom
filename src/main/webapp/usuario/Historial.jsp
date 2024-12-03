@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario"%>
 <% Usuario usu =(Usuario)session.getAttribute("usuario");%>
 <%@page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.*"%>
@@ -6,7 +5,6 @@
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
     List<Venta> historialVentas = (List<Venta>) session.getAttribute("historialCompras");
-
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,7 +71,7 @@
                         <i class="fas fa-shopping-bag fa-3x text-primary" style="font-size: 3rem;"></i>
                     </div>
                     <div class="flex-grow-1 pl-3">
-                        <h5 class="mb-1">Compra #<%= venta.getId() %></h5>
+                        <h5 class="mb-1">ID de Compra #<%= venta.getId() %></h5>
                         <p class="mb-0 text-muted">Fecha: <%= venta.getFecha() %></p>
                         <p class="mb-0 text-muted">Estado: <%= venta.getEstado() %></p>
                         <p class="mb-0 text-muted">Total: S/ <%= venta.getTotal() %></p>
@@ -144,70 +142,7 @@
     <% } %>
 </div>
 
-
-<footer class="site-footer border-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="footer-heading mb-4">Navegacion</h3>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="about.jsp">Nosotros</a></li>
-                            <li><a href="shop.jsp">Productos</a></li>
-                            <li><a href="contact.jsp">Contactanos</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Cuadernos</a></li>
-                            <li><a href="#">Temperas</a></li>
-                            <li><a href="#">Plumones</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Tajadores</a></li>
-                            <li><a href="#">Borradores</a></li>
-                            <li><a href="#">Tijeras</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <h3 class="footer-heading mb-4">Promoción del Mes!</h3>
-                <a href="#" class="block-6">
-                    <img src="images/promo3.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-                    <h3 class="font-weight-light  mb-0">Mejor precio, Más comodo.</h3>
-                    <p>promo por diciembre 11 &mdash; 30, 2024</p>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="block-5 mb-5">
-                    <h3 class="footer-heading mb-4">Información de Contacto</h3>
-                    <ul class="list-unstyled">
-                        <li class="address">Mz I Lote 13 Usares de Junín</li>
-                        <li class="phone"><a href="tel://997621074">+51 997621074</a></li>
-                        <li class="email">shalom@gmail.com</li>
-                    </ul>
-                </div>
-
-                <div class="block-7">
-                    <form action="#" method="post">
-                        <label for="email_subscribe" class="footer-heading">Enviar Correo</label>
-                        <div class="form-group">
-                            <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                            <input type="submit" class="btn btn-sm btn-primary" value="Send">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<jsp:include page="footer/footer.jsp"/>
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
@@ -220,4 +155,3 @@
 <script src="js/main.js"></script>
 </body>
 </html>
-
