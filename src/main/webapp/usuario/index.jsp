@@ -149,7 +149,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/tempera-x-250-ml-rosado-faber-castell-16704011-default-1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/tempera.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Tempera</a></h3>
@@ -173,7 +173,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/faber-castell-boligrafo-032-m-trilux-x-12-surt-343211-33748-default-1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/lapicero.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Boligrafo</a></h3>
@@ -232,70 +232,7 @@
       </div>
     </div>
 
-    <footer class="site-footer border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Navegacion</h3>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">oline</a></li>
-                  <li><a href="#">favoritos</a></li>
-                  <li><a href="#">carrito de compra</a></li>
-                  <li><a href="#">Store builder</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">e-Commerce phone</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">desarrollo de sitio</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">puntos de venta</a></li>
-                  <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">Promocion!</h3>
-            <a href="#" class="block-6">
-              <img src="images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">mejor precio, mas comodo.</h3>
-              <p>promo por septiembre 11 &mdash; 25, 2024</p>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Iformacion de contacto</h3>
-              <ul class="list-unstyled">
-                <li class="address">Mz i lote 13 usares de junin</li>
-                <li class="phone"><a href="tel://997621074">+51 997621074</a></li>
-                <li class="email">shalom@domain.com</li>
-              </ul>
-            </div>
-
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Escribenos</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-primary" value="Send">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </footer>
+  <jsp:include page="footer/footer.jsp"/>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
