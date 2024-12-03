@@ -8,15 +8,11 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Filter;
 import java.util.logging.LogRecord;
-import org.cahuas.webapp.servelet.cabeceras.models.services.ServiceJdbcException;
-import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
 public class ConexionFilter implements Filter{
 
