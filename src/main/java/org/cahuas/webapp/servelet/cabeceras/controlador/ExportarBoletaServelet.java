@@ -1,5 +1,5 @@
-package org.cahuas.webapp.servelet.cabeceras.controlador;
 
+package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletOutputStream;
@@ -11,75 +11,54 @@ import jakarta.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
-import org.cahuas.webapp.servelet.cabeceras.models.modelo.*;
-import org.cahuas.webapp.servelet.cabeceras.models.services.VentaServiceJdbcImpl;
-import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Carro;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.DatalleProducto;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
 import java.util.*;
 
-@WebServlet("/usuario/carro/exportarproduc")
+@WebServlet("/usuario/carro/exportarproduc") // Define la URL del servlet para generar el reporte
 public class ExportarBoletaServelet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ServletOutputStream out = resp.getOutputStream();
-        try  {
-        HttpSession session = req.getSession();
-        Carro carro = (Carro) session.getAttribute("carro");
-        InputStream logoEmpresa = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/img/logosinfondo.png");
-        InputStream reporteProducto = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/BoletaProuctos.jasper");
+        ServletOutputStream out = resp.getOutputStream(); // Obtiene el flujo de salida para enviar el PDF al cliente
+        try {
+            // Recupera la sesión HTTP
+            HttpSession session = req.getSession();
+            // Obtiene el objeto 'carro' de la sesión (especifica los productos en el carrito)
+            Carro carro = (Carro) session.getAttribute("carro");
 
-        if (logoEmpresa!=null && reporteProducto!=null) {
+            // Obtiene el logo de la empresa y el reporte Jasper desde los recursos del servlet
+            InputStream logoEmpresa = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/img/logoo.png");
+            InputStream reporteProducto = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/BoletaProuctos.jasper");
 
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("logoEmpresa", logoEmpresa);
+            // Verifica si ambos archivos (logo y reporte) se cargaron correctamente
+            if (logoEmpresa != null && reporteProducto != null) {
 
-            // Usa la lista de DetalleProductoDTO en lugar de los items del carro
-            List<DatalleProducto> detallesReporte = new ArrayList<>();
-            detallesReporte.add(new DatalleProducto());
-            detallesReporte.addAll(carro.getDetalleProductos());
-            JRBeanArrayDataSource ds = new JRBeanArrayDataSource(detallesReporte.toArray());
-            parameters.put("ds", ds);
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteProducto);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, ds);
-            resp.setContentType("application/pdf");
-            resp.setHeader("Content-Disposition", "inline; filename=boleta.pdf");
+                // Mapa de parámetros que se pasan al reporte Jasper
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("logoEmpresa", logoEmpresa); // Agrega el logo de la empresa
 
-            JasperExportManager.exportReportToPdfStream(jasperPrint, out);
-            out.flush();
-            out.close();
+                // Crea una lista de detalle de productos a partir del carrito
+                List<DatalleProducto> detallesReporte = new ArrayList<>();
+                detallesReporte.add(new DatalleProducto()); // Puedes agregar una entrada vacía si es necesario
+                detallesReporte.addAll(carro.getDetalleProductos()); // Agrega los productos del carro
 
+                // Crea una fuente de datos para JasperReports usando los detalles de productos
+                JRBeanArrayDataSource ds = new JRBeanArrayDataSource(detallesReporte.toArray());
+                parameters.put("ds", ds); // Agrega la fuente de datos a los parámetros
 
-            Connection conn = ConexionBaseDatos.getConnection();
-            conn.setAutoCommit(false);
-            VentaServiceJdbcImpl ventaService = new VentaServiceJdbcImpl(conn);
-            Usuario usuario = (Usuario) session.getAttribute("usuario");
-            String t= "pendiente";
-            conn.commit();
-            int o = ventaService.insertarVenta(usuario.getId(),t, carro.getTotal());
-            List<DetalleVenta> det= new ArrayList<>();
-            for(ItemCarro v: carro.getItems()){
-                DetalleVenta dv = new DetalleVenta(o,v.getProducto(),v.getCantidad(),v.getProducto().getPrecio(),(v.getCantidad()*v.getProducto().getPrecio()));
-                 det.add(dv);
-            }
-            conn.commit();
-            ventaService.insertarDetalleVenta(o,det);
-            conn.commit();
-            List<Venta> historialVentas = ventaService.obtenerHistorialVentas(usuario.getId());
-            session.setAttribute("historialCompras", historialVentas);
-            carro.getItems().clear();
+                // Carga el reporte Jasper
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteProducto);
+                // Rellena el reporte con los parámetros y la fuente de datos
+                JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, ds);
 
-          }else {
-            resp.setContentType("text/plain");
-            out.println("no se pudeo generar el reporte");
-        }
-        } catch (Exception e) {
-            resp.setContentType("text/plain");
-            out.print("ocurrio un error al intentar generar el reporte: "+e.getMessage());
-            e.printStackTrace();
-        }
-    }
-}
+                // Configura la respuesta HTTP para enviar el reporte en formato PDF
+                resp.setContentType("application/pdf");
+                resp.setHeader("Content-Disposition", "inline; filename=boleta.pdf");
+
+                // Exporta el reporte a PDF y lo escribe en el flujo de salida
+                JasperExportManager.exportReportToPdfStream
