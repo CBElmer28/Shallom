@@ -21,39 +21,48 @@ import java.util.List;
 
 @WebServlet("/ExportarExcel")
 public class ExportarExcelServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Establecer la conexión a la base de datos
         Connection connection = null;
         try {
-            connection = ConexionBaseDatos.getConnection();
+            connection = ConexionBaseDatos.getConnection();  // Obtiene la conexión con la base de datos
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);  // Maneja la excepción si no se puede conectar a la base de datos
         }
+        
+        // Crear el servicio para manejar los productos y obtener la lista de productos
         ProductoService service = new ProductoServiceJdbcImpl(connection);
-        List<Producto> productos = service.listar();
-        //  contenido para el Excel
+        List<Producto> productos = service.listar();  // Obtiene todos los productos desde la base de datos
+        
+        // Configurar la respuesta HTTP para descargar el archivo Excel
         resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        resp.setHeader("Content-Disposition", "attachment; filename=productos.xlsx");
-        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+        resp.setHeader("Content-Disposition", "attachment; filename=productos.xlsx");  // Define el nombre del archivo de salida
+
+        try (XSSFWorkbook workbook = new XSSFWorkbook()) {  // Crea un libro de trabajo de Excel usando Apache POI
+            // Crear la hoja de trabajo y el encabezado
             Sheet sheet = workbook.createSheet("Productos");
-            // Crea la fila de encabezado
-            Row headerRow = sheet.createRow(0);
+            Row headerRow = sheet.createRow(0);  // Fila de encabezado en la primera fila
             headerRow.createCell(0).setCellValue("ID");
             headerRow.createCell(1).setCellValue("Nombre");
             headerRow.createCell(2).setCellValue("Precio");
             headerRow.createCell(3).setCellValue("Cantidad");
-            // Llena los datos de productos
-            int rowNum = 1;
+
+            // Llenar la hoja con los datos de los productos
+            int rowNum = 1;  // Comienza en la segunda fila
             for (Producto producto : productos) {
-                Row row = sheet.createRow(rowNum++);
-                row.createCell(0).setCellValue(producto.getId());
-                row.createCell(1).setCellValue(producto.getNom());
-                row.createCell(2).setCellValue(producto.getPrecio());
-                row.createCell(3).setCellValue(producto.getStock());
+                Row row = sheet.createRow(rowNum++);  // Crea una nueva fila por cada producto
+                row.createCell(0).setCellValue(producto.getId());  // Establece el ID del producto
+                row.createCell(1).setCellValue(producto.getNom());  // Establece el nombre del producto
+                row.createCell(2).setCellValue(producto.getPrecio());  // Establece el precio del producto
+                row.createCell(3).setCellValue(producto.getStock());  // Establece la cantidad en stock del producto
             }
+
+            // Escribir el archivo Excel en la respuesta
             ServletOutputStream outputStream = resp.getOutputStream();
-            workbook.write(outputStream);
-            outputStream.flush();
+            workbook.write(outputStream);  // Escribe el contenido del libro en el flujo de salida
+            outputStream.flush();  // Asegura que todo el contenido se envíe al cliente
         }
     }
 }
