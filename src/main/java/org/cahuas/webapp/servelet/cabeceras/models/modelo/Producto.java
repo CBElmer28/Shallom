@@ -30,8 +30,22 @@ public class Producto {
         this.ruta_imagen = ruta_imagen;
     }
 
+    // Constructor para tests
+    public Producto(int id, String nom, int precio) {
+        this.id = id;
+        this.nom = nom;
+        this.precio = precio;
+    }
     public Producto() {
     }
+    public Producto(int id, String nom, int precio, int stock) {
+        this.id = id;
+        this.nom = nom;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    //Sets y Getters
 
     public Integer getId() {
         return id;

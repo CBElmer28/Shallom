@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Producto;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Proveedor;
-import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoService;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoServiceJdbcImpl;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 

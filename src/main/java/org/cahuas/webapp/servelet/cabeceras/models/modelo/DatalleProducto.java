@@ -29,4 +29,10 @@ public class DatalleProducto {
     public Integer getTotalproduc() {
         return totalproduc;
     }
+
+    public DatalleProducto(String nom, Integer cantidad, Integer totalproductoo) {
+        this.nom = nom;
+        this.cantidad = cantidad;
+        this.totalproduc = totalproductoo;
+    }
 }

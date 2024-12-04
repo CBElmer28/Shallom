@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
+import org.mindrot.jbcrypt.BCrypt;
 
 @WebServlet("/newPassword")
 public class NewPassword extends HttpServlet {
@@ -36,6 +37,9 @@ public class NewPassword extends HttpServlet {
 				// Obtener el email de la sesión
 				String email = (String) session.getAttribute("email");
 
+				// Cifrar la nueva contraseña usando BCrypt
+				String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+
 				// Realizar el UPDATE en la tabla 'usuarios' usando el 'email' en la tabla 'clientes'
 				String sql = "UPDATE usuarios u " +
 						"JOIN clientes c ON u.id = c.id_usuario " +
@@ -45,7 +49,7 @@ public class NewPassword extends HttpServlet {
 				PreparedStatement pst = con.prepareStatement(sql);
 
 				// Establecer los parámetros de la consulta
-				pst.setString(1, newPassword);
+				pst.setString(1, hashedPassword); // Establecer la contraseña cifrada
 				pst.setString(2, email); // Usar el 'email' para encontrar el usuario
 
 				// Ejecutar la actualización

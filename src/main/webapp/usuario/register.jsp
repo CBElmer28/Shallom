@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,29 +36,34 @@
                     <span class="login100-form-title p-b-51">
                         Registro
                     </span>
-
+                    <label for="nombre" class="form-label">Nombre:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Username es requerido">
-                        <input class="input100" type="text" id="nombre" name="nombre" placeholder="nombre">
+                        <input class="input100" type="text" id="nombre" name="nombre" placeholder="Nombre">
                     </div>
 
+                    <label for="user" class="form-label">Usuario:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="User es requerido">
-                        <input class="input100" type="text" id="user" name="user" placeholder="user">
+                        <input class="input100" type="text" id="user" name="user" placeholder="Usuario">
                     </div>
 
+                    <label for="correo" class="form-label">Correo Electrónico:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="email" id="correo" name="correo" placeholder="correo">
+                        <input class="input100" type="email" id="correo" name="correo" placeholder="Correo">
                     </div>
 
+                    <label for="telefono" class="form-label">Celular:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="number" id="telefono" name="telefono" placeholder="telefono">
+                        <input class="input100" type="number" id="telefono" name="telefono" placeholder="Telefono">
                     </div>
 
+                    <label for="DNI" class="form-label">DNI:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="number" id="DNI" name="DNI" placeholder="DNI">
+                        <input class="input100" type="number" id="DNI" name="DNI" placeholder="Dni">
                     </div>
 
+                    <label for="password" class="form-label">Contraseña</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" id="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" id="password" placeholder="Contraseña" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
                     </div>
 
 
@@ -137,4 +141,3 @@
 
 </body>
 </html>
-

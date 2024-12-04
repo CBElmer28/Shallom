@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
+import org.cahuas.webapp.servelet.cabeceras.models.services.PasswordUtil;
 
 public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
     private Connection conn;
@@ -18,9 +19,7 @@ public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
         this.conn = conn;
     }
 
-
     private Usuario getUsuario(ResultSet rs) throws SQLException {
-
         Usuario p = new Usuario();
         p.setId(rs.getInt("id"));
         p.setDni(rs.getInt("dni"));
@@ -61,13 +60,16 @@ public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
     @Override
     public Usuario UsuarioSesion(String username, String password) throws SQLException {
         Usuario usuario = null;
-        String sql = "SELECT * FROM usuarios WHERE user = ? AND pass = ?";
+        String sql = "SELECT * FROM usuarios WHERE user = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
-            stmt.setString(2, password);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    usuario = getUsuario(rs);
+                    usuario = getUsuario(rs); // Obtienes el usuario de la BD
+                    // Validas la contraseña usando BCrypt
+                    if (!PasswordUtil.checkPassword(password, usuario.getPass())) {
+                        usuario = null; // Si la contraseña no coincide, usuario es null
+                    }
                 }
             }
         }
@@ -106,7 +108,8 @@ public class UsuarioRepositoryJdbcImpl implements RepositoryUsuario<Usuario> {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, dni);
             stmt.setString(2, usuario);
-            stmt.setString(3, pass);
+            String hashedPassword = PasswordUtil.hashPassword(pass);
+            stmt.setString(3, hashedPassword);
             stmt.setString(4, tipo);
             stmt.executeUpdate();
         }
