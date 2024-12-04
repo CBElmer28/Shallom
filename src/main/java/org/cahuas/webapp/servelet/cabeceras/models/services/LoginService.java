@@ -4,8 +4,6 @@
  */
 package org.cahuas.webapp.servelet.cabeceras.models.services;
 
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
 import org.cahuas.webapp.servelet.cabeceras.models.repositories.RepositoryUsuario;
 

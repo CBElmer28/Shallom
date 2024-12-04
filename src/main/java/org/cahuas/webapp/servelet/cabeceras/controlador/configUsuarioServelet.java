@@ -1,3 +1,21 @@
+package org.cahuas.webapp.servelet.cabeceras.controlador;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Cliente;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
+import org.cahuas.webapp.servelet.cabeceras.models.services.ClienteServiceJdbcImpl;
+import org.cahuas.webapp.servelet.cabeceras.models.services.LoginServiceJdbcImpl;
+import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @WebServlet("/config")
 public class configUsuarioServelet extends HttpServlet {
     @Override
@@ -85,3 +103,4 @@ public class configUsuarioServelet extends HttpServlet {
         }
     }
 }
+
