@@ -18,27 +18,49 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet que exporta los productos en formato Excel.
+ * Esta clase maneja la exportación de la lista de productos a un archivo Excel.
+ * El archivo generado incluye las columnas: ID, Nombre, Precio y Cantidad.
+ *
+ * @author Team Shalom
+ * @version 1.0
+ */
 @WebServlet("/ExportarExcel")
 public class ExportarExcelServlet extends HttpServlet {
+
+    /**
+     * Maneja la solicitud GET para exportar la lista de productos a un archivo Excel.
+     * 
+     * @param req la solicitud HTTP
+     * @param resp la respuesta HTTP
+     * @throws ServletException si ocurre un error en el procesamiento del servlet
+     * @throws IOException si ocurre un error de entrada/salida
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection;
         try {
+            // Establece la conexión a la base de datos
             connection = ConexionBaseDatos.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        
+        // Obtiene el servicio de productos y la lista de productos
         ProductoService service = new ProductoServiceJdbcImpl(connection);
         List<Producto> productos = service.listar();
 
-        // Configuración para el archivo Excel
+        // Configura el tipo de contenido para una descarga de archivo Excel
         resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         resp.setHeader("Content-Disposition", "attachment; filename=productos.xlsx");
 
+        // Crea un libro de trabajo de Excel en memoria
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+            // Crea una hoja llamada "Productos"
             Sheet sheet = workbook.createSheet("Productos");
 
-            // Estilos personalizados
+            // Crea y configura los estilos para las celdas del encabezado
             CellStyle headerStyle = workbook.createCellStyle();
             Font headerFont = workbook.createFont();
             headerFont.setBold(true);
@@ -54,6 +76,7 @@ public class ExportarExcelServlet extends HttpServlet {
             headerStyle.setBorderLeft(BorderStyle.THIN);
             headerStyle.setBorderRight(BorderStyle.THIN);
 
+            // Crea y configura los estilos para las celdas de los datos
             CellStyle dataStyle = workbook.createCellStyle();
             Font dataFont = workbook.createFont();
             dataFont.setFontHeightInPoints((short) 12);
@@ -65,7 +88,7 @@ public class ExportarExcelServlet extends HttpServlet {
             dataStyle.setBorderLeft(BorderStyle.THIN);
             dataStyle.setBorderRight(BorderStyle.THIN);
 
-            // Crea la fila de encabezado
+            // Crea la fila de encabezado con los nombres de las columnas
             Row headerRow = sheet.createRow(0);
             String[] headers = {"ID", "Nombre", "Precio", "Cantidad"};
             for (int i = 0; i < headers.length; i++) {
@@ -74,7 +97,7 @@ public class ExportarExcelServlet extends HttpServlet {
                 cell.setCellStyle(headerStyle);
             }
 
-            // Llena los datos de productos
+            // Llena las filas con los datos de los productos
             int rowNum = 1;
             for (Producto producto : productos) {
                 Row row = sheet.createRow(rowNum++);
@@ -95,12 +118,12 @@ public class ExportarExcelServlet extends HttpServlet {
                 cellStock.setCellStyle(dataStyle);
             }
 
-            // Ajustar el tamaño de las columnas automáticamente
+            // Ajusta el tamaño de las columnas automáticamente
             for (int i = 0; i < headers.length; i++) {
                 sheet.autoSizeColumn(i);
             }
 
-            // Escribir el archivo Excel al cliente
+            // Escribe el archivo Excel en la respuesta HTTP
             ServletOutputStream outputStream = resp.getOutputStream();
             workbook.write(outputStream);
             outputStream.flush();
