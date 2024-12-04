@@ -1,4 +1,3 @@
-
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario" %>
 <%@ page import="org.cahuas.webapp.servelet.cabeceras.models.modelo.Cliente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -44,25 +43,25 @@
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Nombre es requerido">
                         <input class="input100" type="text" id="nombre" name="nombre" value="<%=c.getNombre()%>">
                     </div>
-                    <label for="nombre" class="form-label">Usuario:</label>
+                    <label for="user" class="form-label">Usuario:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="User es requerido">
                         <input class="input100" type="text" id="user" name="user" value="<%=usu.getUser()%>">
                     </div>
-                    <label for="nombre" class="form-label">Correo Electrónico:</label>
+                    <label for="correo" class="form-label">Correo Electrónico:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
                         <input class="input100" type="email" id="correo" name="correo" value="<%=c.getCo()%>">
                     </div>
-                    <label for="nombre" class="form-label">Celular:</label>
+                    <label for="telefono" class="form-label">Celular:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="telefono es requerido">
                         <input class="input100" type="number" id="telefono" name="telefono" value="<%=c.getTel()%>">
                     </div>
-                    <label for="nombre" class="form-label">DNI:</label>
+                    <label for="DNI" class="form-label">DNI:</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="DNI es requerido">
                         <input class="input100" type="number" id="DNI" name="DNI" value="<%=usu.getDni()%>">
                     </div>
-                    <label for="nombre" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">Contraseña</label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" id="password" value="<%=usu.getPass()%>">
+                        <input class="input100" type="password" name="password" id="password" value="" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
                     </div>
 
 
@@ -138,4 +137,3 @@
 
 </body>
 </html>
-

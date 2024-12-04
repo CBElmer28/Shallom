@@ -15,6 +15,13 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public Usuario(int id, String user, String pass, String tipo) {
+        this.id = id;
+        this.user = user;
+        this.pass = pass;
+        this.tipo = tipo;
+    }
+
     public Usuario() {
     }
 
