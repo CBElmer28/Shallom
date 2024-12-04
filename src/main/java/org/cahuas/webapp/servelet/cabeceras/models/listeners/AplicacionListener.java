@@ -11,10 +11,7 @@ import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Carro;
 
-/**
- *
- * @author keyen
- */
+
 @WebListener
 public class AplicacionListener implements  HttpSessionListener {
     private ServletContext servletContext;

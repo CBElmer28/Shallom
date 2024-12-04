@@ -35,7 +35,7 @@
                     </span>
 
 					<p class="text-center txt1 m-b-20" style="color: #666666;">
-						Por favor, ingresa tu nueva contraseña y confírmala para continuar. (Tu contraseña debe tener almenos 8 caracteres, 1 letra y 1 número)
+						Por favor, ingresa tu nueva contraseña y confírmala para continuar. <b>(Tu contraseña debe tener almenos 8 caracteres, 1 letra y 1 número)</b>
 					</p>
 
 					<%-- Mensaje de error si las contraseñas no coinciden --%>

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
 
-
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -19,12 +18,12 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/forgotPassword")
 public class ForgotPassword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String email = request.getParameter("email");
 		RequestDispatcher dispatcher = null;
 		int otpvalue = 0;
 		HttpSession mySession = request.getSession();
-		
+
 		if(email!=null || !email.equals("")) {
 			// sending otp
 			Random rand = new Random();
@@ -67,7 +66,7 @@ public class ForgotPassword extends HttpServlet {
 						+ "<p>Por favor, utiliza el siguiente código para continuar con el proceso de recuperación:</p>"
 						+ "<p class='code'>" + otpvalue + "</p>"
 						+ "<p>Si no solicitaste este cambio, ignora este mensaje. Tu cuenta está segura.</p>"
-						+ "<p class='footer'>Atentamente,<br>El equipo de Tu Empresa</p>"
+						+ "<p class='footer'>Atentamente,<br>El equipo de Shalom</p>"
 						+ "</body>"
 						+ "</html>";
 
@@ -84,12 +83,12 @@ public class ForgotPassword extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("/usuario/EnterOTP.jsp");
 			request.setAttribute("message","OTP is sent to your email id");
 			//request.setAttribute("connection", conn);
-			mySession.setAttribute("otp",otpvalue); 
-			mySession.setAttribute("email",email); 
+			mySession.setAttribute("otp",otpvalue);
+			mySession.setAttribute("email",email);
 			dispatcher.forward(request, response);
 			//request.setAttribute("status", "success");
 		}
-		
+
 	}
 
 }
