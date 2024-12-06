@@ -58,100 +58,108 @@
 </nav>
 </header>
 
-<div class="container my-5">
-    <h1 class="text-center mb-4">Historial de Compras</h1>
-    <% if (historialVentas != null && !historialVentas.isEmpty()) { %>
-    <div class="row">
-        <% int index = 0;
-            for (Venta venta : historialVentas) { %>
-        <div class="col-12 mb-3">
-            <div class="card p-3 shadow-sm">
-                <div class="d-flex align-items-center">
-                    <div class="p-2">
-                        <i class="fas fa-shopping-bag fa-3x text-primary" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="flex-grow-1 pl-3">
-                        <h5 class="mb-1">ID de Compra #<%= venta.getId() %></h5>
-                        <p class="mb-0 text-muted">Fecha: <%= venta.getFecha() %></p>
-                        <p class="mb-0 text-muted">Estado: <%= venta.getEstado() %></p>
-                        <p class="mb-0 text-muted">Total: S/ <%= venta.getTotal() %></p>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#detailsModal<%= index %>">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a href="index.jsp">Inicio</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Historial</strong></div>
             </div>
         </div>
-
-        <!-- Modal para ver los detalles de la venta -->
-        <div class="modal fade" id="detailsModal<%= index %>" tabindex="-1" role="dialog"
-             aria-labelledby="detailsModalLabel<%= index %>" aria-hidden="true" style="z-index: 2000;">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="detailsModalLabel<%= index %>">Detalles de Venta</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Imagen</th>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <%
-                                    // Aquí recorremos los detalles de la venta
-                                    for (DetalleVenta detalle : venta.getDetalles()) {
-                                %>
-                                <tr>
-                                    <td><img src="<%= request.getContextPath() + "/usuario/images/" + detalle.getProducto().getRuta_imagen() %>"
-                                             alt="Producto"
-                                             class="img-thumbnail" style="width: 50px; height: 50px;"></td>
-                                    <td><%= detalle.getProducto().getNom() %></td>
-                                    <td><%= detalle.getCantidad() %></td>
-                                    <td>S/ <%= detalle.getSubtotal() %></td>
-                                </tr>
-                                <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="text-right">
-                            <h5>Total: S/ <%= venta.getTotal() %></h5>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% index++;
-        } %>
     </div>
-    <% } else { %>
-    <p class="text-center text-muted mt-5">No hay compras registradas.</p>
-    <% } %>
-</div>
 
-<jsp:include page="footer/footer.jsp"/>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Historial de Compras</h1>
+        <% if (historialVentas != null && !historialVentas.isEmpty()) { %>
+        <div class="row">
+            <% int index = 0;
+                for (Venta venta : historialVentas) { %>
+            <div class="col-12 mb-3">
+                <div class="card p-3 shadow-sm">
+                    <div class="d-flex align-items-center">
+                        <div class="p-2">
+                            <i class="fas fa-shopping-bag fa-3x text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="flex-grow-1 pl-3">
+                            <h5 class="mb-1">ID de Compra #<%= venta.getId() %></h5>
+                            <p class="mb-0 text-muted">Fecha: <%= venta.getFecha() %></p>
+                            <p class="mb-0 text-muted">Estado: <%= venta.getEstado() %></p>
+                            <p class="mb-0 text-muted">Total: S/ <%= venta.getTotal() %></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#detailsModal<%= index %>">
+                                Ver detalles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
+            <!-- Modal para ver los detalles de la venta -->
+            <div class="modal fade" id="detailsModal<%= index %>" tabindex="-1" role="dialog"
+                 aria-labelledby="detailsModalLabel<%= index %>" aria-hidden="true" style="z-index: 2000;">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="detailsModalLabel<%= index %>">Detalles de Compra</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%
+                                        // Aquí recorremos los detalles de la venta
+                                        for (DetalleVenta detalle : venta.getDetalles()) {
+                                    %>
+                                    <tr>
+                                        <td><img src="<%= request.getContextPath() + "/usuario/images/" + detalle.getProducto().getRuta_imagen() %>"
+                                                 alt="Producto"
+                                                 class="img-thumbnail" style="width: 50px; height: 50px;"></td>
+                                        <td><%= detalle.getProducto().getNom() %></td>
+                                        <td><%= detalle.getCantidad() %></td>
+                                        <td>S/ <%= detalle.getSubtotal() %></td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-right">
+                                <h5>Total: S/ <%= venta.getTotal() %></h5>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% index++;
+            } %>
+        </div>
+        <% } else { %>
+        <p class="text-center text-muted mt-5">No hay compras registradas.</p>
+        <% } %>
+    </div>
 
-<script src="js/main.js"></script>
+    <jsp:include page="footer/footer.jsp"/>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

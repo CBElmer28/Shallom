@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
   </head>
   <body>
 
@@ -47,14 +48,20 @@
     </header>
 
     <div class="site-blocks-cover" style="background-image: url(images/blog_12.png);" data-aos="fade">
-      <div class="container">
-        <div class="row align-items-start align-items-md-center justify-content-end">
-          <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-            <h1 class="mb-2">TU PORTAL DE LIBROS Y MÁS 😎</h1>
-            <div class="intro-text text-center text-md-left">
-              <p class="mb-4">Elige entre la gran variedad de productos para la escuela, universidad y oficina. </p>
+      <div class="container" style="position: relative; left: -300px;">
+        <div class="row align-items-start align-items-md-center justify-content-center">
+
+          <!-- Contenedor para el fondo transparente -->
+          <div class="responsive-container">
+            <h1 class="mb-2 main-title" style="text-align: center; font-size: 5.4rem; color: #ffffff; text-shadow: 2px 2px 7px yellow;">
+              TU PORTAL DE LIBROS Y MÁS 😎
+            </h1>
+            <div class="intro-text text-center">
+              <p class="mb-4 intro-paragraph" style="font-weight: bold; font-size: 2.3rem; color: white; text-shadow: 2px 2px 4px #000000;">
+                Elige entre la gran variedad de productos para la escuela, universidad y oficina.
+              </p>
               <p>
-                <a href="#" class="btn btn-sm btn-primary">Comenzar</a>
+                <a href="/webbs/usuario/productos" class="btn btn-sm btn-primary">Comenzar</a>
               </p>
             </div>
           </div>
@@ -71,7 +78,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">envio gratis</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p>Disfruta de envío gratuito en pedidos superiores a S/ 150. Llevamos tus productos a la puerta de tu casa sin costo adicional.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
@@ -80,7 +87,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">retorno gratis</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p>Si no estás satisfecho, tienes hasta 30 días para devolver tu compra de manera simple y sin complicaciones.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
@@ -89,7 +96,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">soporte siempre</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p>Estamos disponibles para ayudarte a cualquier hora, los 7 días de la semana. Contáctanos por chat, correo o llamada.</p>
             </div>
           </div>
         </div>
@@ -102,33 +109,33 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="images/Women.jpg" alt="" class="img-fluid">
+                <img src="images/tijera.jpg" alt="" class="img-fluid">
               </figure>
               <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>Madres</h3>
+                <span class="text-uppercase">Colecciones</span>
+                <h3>Tijeras</h3>
               </div>
             </a>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="images/Children.jpg"  alt="" class="img-fluid">
+                <img src="images/faberlapicero.jpg"  alt="" class="img-fluid">
               </figure>
               <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>niños</h3>
+                <span class="text-uppercase">Colecciones</span>
+                <h3>Lapiceros</h3>
               </div>
             </a>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="images/Men.jpg" alt="" class="img-fluid">
+                <img src="images/cuaderno1.jpg" alt="" style="width: 100%; height: auto;" class="img-fluid">
               </figure>
               <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>Jovenes</h3>
+                <span class="text-uppercase">Colecciones</span>
+                <h3>Cuadernos</h3>
               </div>
             </a>
           </div>
@@ -140,7 +147,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
+            <h2>Productos Más Destacados</h2>
           </div>
         </div>
         <div class="row">
@@ -149,59 +156,60 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/tempera.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/faber.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Tempera</a></h3>
-                    <p class="mb-0">tempera rosada 1000 faber castell</p>
-                    <p class="text-primary font-weight-bold">$12</p>
+                    <p class="mb-0">Tempera rosada 250ml Faber Castell</p>
+                    <p class="text-primary font-weight-bold">S/. 8.50</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/temperaartesco.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">zapatillas</a></h3>
-                    <p class="mb-0">calidad de lana</p>
-                    <p class="text-primary font-weight-bold">$30</p>
+                    <h3><a href="#">Tempera</a></h3>
+                    <p class="mb-0">Tempera Artesco Escarchada x 6 unid. </p>
+                    <p class="text-primary font-weight-bold">S/. 11.90</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/lapicero.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/boligrafos.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Boligrafo</a></h3>
-                    <p class="mb-0">Bolígrafos Faber Castell</p>
-                    <p class="text-primary font-weight-bold">$9.8</p>
+                    <p class="mb-0">Bolígrafos Faber Castell X 12 unid.</p>
+                    <p class="text-primary font-weight-bold">S/. 12.50</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/plumonesartica2.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Plumones</a></h3>
+                    <p class="mb-0">Plumón Arti Creativo Jumbo Mamut X 12 Und</p>
+                    <p class="text-primary font-weight-bold">S/. 15.00</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/lapicero4.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">lapiceros</a></h3>
-                    <p class="text-primary font-weight-bold">$3</p>
+                    <h3><a href="#">Lapiceros</a></h3>
+                    <p class="mb-0">Paquete de Lapiceros Typo X 4 Und</p>
+                    <p class="text-primary font-weight-bold">S/. 15.00</p>
                   </div>
                 </div>
               </div>
@@ -215,18 +223,19 @@
       <div class="container">
         <div class="row justify-content-center  mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Gran venta!</h2>
+            <h2>GRAN VENTA!</h2>
           </div>
         </div>
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-7 mb-5">
-            <a href="#"><img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
+            <a href="#"><img src="images/estante.png" alt="Image placeholder" class="img-fluid rounded"></a>
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">50% producto de casa</a></h2>
+            <h2><a href="#">50% de descuento en útiles escolares</a></h2>
             <p class="post-meta mb-4">Por <a href="#">Shalom</a> <span class="block-8-sep">&bullet;</span> septiembre 29, 2024</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-            <p><a href="#" class="btn btn-primary btn-sm">compra ahora</a></p>
+            <p>Encuentra los mejores descuentos en libros de texto, novelas, y material de oficina. ¡Aprovecha estas ofertas por tiempo limitado!
+            </p>
+            <p><a href="/webbs/usuario/productos" class="btn btn-primary btn-sm">Compra Ahora</a></p>
           </div>
         </div>
       </div>

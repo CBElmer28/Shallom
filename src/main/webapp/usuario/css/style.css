@@ -135,7 +135,7 @@ a {
 .site-navbar {
   background: #fff;
   margin-bottom: 0px;
-  z-index: 1999;
+  z-index: 1000;
   position: relative; }
   .site-navbar.transparent {
     background: transparent; }
@@ -458,7 +458,7 @@ a {
     color: #000; }
     @media (min-width: 768px) {
       .site-blocks-cover h1 {
-        font-size: 50px; } }
+        font-size: 50px;} }
   .site-blocks-cover p {
     color: #333333;
     font-size: 20px;
@@ -751,3 +751,6 @@ a {
   width: 120px;
   border-radius: 50%;
   margin-bottom: 20px; }
+
+
+
