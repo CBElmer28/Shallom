@@ -1,3 +1,4 @@
+
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
@@ -6,8 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Producto;
-import org.cahuas.webapp.servelet.cabeceras.models.services.LoginService;
-import org.cahuas.webapp.servelet.cabeceras.models.services.LoginServiceJdbcImpl;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoService;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoServiceJdbcImpl;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
@@ -52,6 +51,8 @@ public class ProductosServelet extends HttpServlet {
             ProductoService service = new ProductoServiceJdbcImpl(conn);
             
             // Obtener la lista de productos desde el servicio
+            
+            // Obtener la lista de productos desde el servicio
             List<Producto> productos = service.listar();
             
             // Establecer la lista de productos como atributo de la solicitud
@@ -62,6 +63,7 @@ public class ProductosServelet extends HttpServlet {
             
             // Si la solicitud es para el usuario, redirigir a la página de tienda
             if (requestURI.endsWith("/usuario/productos")) {
+                // Si la solicitud es para el usuario, redirigir a shop.jsp
                 getServletContext().getRequestDispatcher("/usuario/shop.jsp").forward(req, resp);
             } 
             // Si la solicitud es para el administrador, redirigir a la página de inventario

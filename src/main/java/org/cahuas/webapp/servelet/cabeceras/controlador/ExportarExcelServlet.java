@@ -1,3 +1,4 @@
+
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
@@ -6,7 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Producto;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoService;
@@ -39,12 +41,13 @@ public class ExportarExcelServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection;
+        // Establecer la conexión a la base de datos
+        Connection connection = null;
         try {
             // Establece la conexión a la base de datos
             connection = ConexionBaseDatos.getConnection();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);  // Maneja la excepción si no se puede conectar a la base de datos
         }
         
         // Obtiene el servicio de productos y la lista de productos
@@ -53,7 +56,7 @@ public class ExportarExcelServlet extends HttpServlet {
 
         // Configura el tipo de contenido para una descarga de archivo Excel
         resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        resp.setHeader("Content-Disposition", "attachment; filename=productos.xlsx");
+        resp.setHeader("Content-Disposition", "attachment; filename=productos.xlsx");  // Define el nombre del archivo de salida
 
         // Crea un libro de trabajo de Excel en memoria
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
@@ -125,8 +128,8 @@ public class ExportarExcelServlet extends HttpServlet {
 
             // Escribe el archivo Excel en la respuesta HTTP
             ServletOutputStream outputStream = resp.getOutputStream();
-            workbook.write(outputStream);
-            outputStream.flush();
+            workbook.write(outputStream);  // Escribe el contenido del libro en el flujo de salida
+            outputStream.flush();  // Asegura que todo el contenido se envíe al cliente
         }
     }
 }

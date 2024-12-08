@@ -1,3 +1,4 @@
+
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
@@ -41,6 +42,7 @@ public class RegistroUsuarioServelet  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Obtener los datos del formulario
+        // Obtener los datos del formulario
         String username = req.getParameter("nombre");
         String user = req.getParameter("user");
         String correo = req.getParameter("correo");
@@ -58,13 +60,14 @@ public class RegistroUsuarioServelet  extends HttpServlet {
         try {
             dni = Integer.valueOf(req.getParameter("DNI"));
         } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             dni = 0;
         }
         
         String password = req.getParameter("password");
 
         // Validar los datos (opcional)
-        if (username == null || user == null || correo == null  || password == null) {
+        if (username == null || user == null || correo == null || password == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos los campos son obligatorios.");
             return;
         }
@@ -79,7 +82,7 @@ public class RegistroUsuarioServelet  extends HttpServlet {
 
         // Iniciar la transacción para crear el usuario y el cliente
         try {
-            conn.setAutoCommit(false);
+            conn.setAutoCommit(false);  // Desactivar el autocommit para realizar la transacción manualmente
             ClienteServiceJdbcImpl pro = new ClienteServiceJdbcImpl(conn);
             LoginServiceJdbcImpl usuario = new LoginServiceJdbcImpl(conn);
             String t = "usu"; // Tipo de usuario
@@ -118,3 +121,4 @@ public class RegistroUsuarioServelet  extends HttpServlet {
         }
     }
 }
+

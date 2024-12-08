@@ -1,3 +1,4 @@
+
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
@@ -12,7 +13,6 @@ import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -41,6 +41,7 @@ public class ProductoServelet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Intentar obtener el ID del producto de los parámetros de la solicitud
         Integer idProducto;
         try {
             // Intentar obtener el ID del producto desde los parámetros de la solicitud
@@ -49,6 +50,7 @@ public class ProductoServelet extends HttpServlet {
             // Si no se puede convertir a Integer, establecer el ID del producto como 0
             idProducto = 0;
         }
+
         Producto producto = null;
         try {
             // Obtener una conexión a la base de datos
@@ -68,6 +70,7 @@ public class ProductoServelet extends HttpServlet {
                 // Si el producto no se encuentra, enviar un error 400
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "NO EXISTEN PRODUCTO");
             }
+
         } catch (SQLException e) {
             // Manejar excepciones de base de datos
             throw new RuntimeException(e);

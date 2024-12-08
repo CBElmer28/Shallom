@@ -1,3 +1,4 @@
+
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
@@ -10,13 +11,11 @@ import jakarta.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
-import org.cahuas.webapp.servelet.cabeceras.models.modelo.*;
-import org.cahuas.webapp.servelet.cabeceras.models.services.VentaServiceJdbcImpl;
-import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.Carro;
+import org.cahuas.webapp.servelet.cabeceras.models.modelo.DatalleProducto;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
 import java.util.*;
 
 /**
@@ -30,7 +29,7 @@ import java.util.*;
  * @author Team Shalom
  * @version 1.8
  */
-@WebServlet("/usuario/carro/exportarproduc")
+@WebServlet("/usuario/carro/exportarproduc") // Define la URL del servlet para generar el reporte
 public class ExportarBoletaServelet extends HttpServlet {
 
     /**
@@ -52,19 +51,23 @@ public class ExportarBoletaServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ServletOutputStream out = resp.getOutputStream();
+        ServletOutputStream out = resp.getOutputStream(); // Obtiene el flujo de salida para enviar el PDF al cliente
         try {
-            // Obtener el carrito de compras y otros datos de la sesión
+            // Recupera la sesión HTTP
             HttpSession session = req.getSession();
+            // Obtiene el objeto 'carro' de la sesión (especifica los productos en el carrito)
             Carro carro = (Carro) session.getAttribute("carro");
-            InputStream logoEmpresa = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/img/logosinfondo.png");
+
+            // Obtiene el logo de la empresa y el reporte Jasper desde los recursos del servlet
+            InputStream logoEmpresa = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/img/logoo.png");
             InputStream reporteProducto = this.getServletConfig().getServletContext().getResourceAsStream("/reportesJasper/BoletaProuctos.jasper");
 
-            // Validar que los recursos necesarios estén disponibles
+            // Verifica si ambos archivos (logo y reporte) se cargaron correctamente
             if (logoEmpresa != null && reporteProducto != null) {
-                // Preparar parámetros para JasperReports
+
+                // Mapa de parámetros que se pasan al reporte Jasper
                 Map<String, Object> parameters = new HashMap<>();
-                parameters.put("logoEmpresa", logoEmpresa);
+                parameters.put("logoEmpresa", logoEmpresa); // Agrega el logo de la empresa
 
                 List<DatalleProducto> detallesReporte = new ArrayList<>();
                 detallesReporte.add(new DatalleProducto());

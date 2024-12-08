@@ -50,14 +50,14 @@ public class configUsuarioServelet extends HttpServlet {
         int telefono;
         try {
             telefono = Integer.valueOf(req.getParameter("telefono"));
-        } catch (NumberFormatException e){
-            telefono = 0;
+        } catch (NumberFormatException e) {
+            telefono = 0;  // En caso de que no se ingrese un número válido
         }
         int dni = Integer.parseInt(req.getParameter("DNI"));
         try {
             dni = Integer.valueOf(req.getParameter("DNI"));
-        } catch (NumberFormatException e){
-            dni = 0;
+        } catch (NumberFormatException e) {
+            dni = 0;  // En caso de que no se ingrese un número válido
         }
         String password = req.getParameter("password");
 
@@ -70,10 +70,11 @@ public class configUsuarioServelet extends HttpServlet {
         // Establecer la conexión con la base de datos
         Connection conn = null;
         try {
-            conn = ConexionBaseDatos.getConnection();
+            conn = ConexionBaseDatos.getConnection();  // Establecer la conexión a la base de datos
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
 
         try {
             // Iniciar la sesión y comenzar la transacción
@@ -100,6 +101,7 @@ public class configUsuarioServelet extends HttpServlet {
             // Redirigir al usuario a la página principal de su cuenta
             resp.sendRedirect(req.getContextPath() + "/usuario/index.jsp");
 
+
         } catch (SQLException e) {
             // Si ocurre un error, deshacer la transacción
             try {
@@ -123,3 +125,4 @@ public class configUsuarioServelet extends HttpServlet {
         }
     }
 }
+
