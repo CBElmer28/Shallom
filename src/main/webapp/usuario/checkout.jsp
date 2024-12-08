@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+    <title>Shalom &mdash; Checkout</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -58,7 +58,7 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Inicio</a> <span class="mx-2 mb-0">/</span> <a href="cart.jsp">Carrito</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.jsp">Inicio</a> <span class="mx-2 mb-0">/</span> <a href="cart.jsp">Carrito</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
         </div>
       </div>
     </div>
@@ -80,15 +80,16 @@
                 <label for="c_country" class="text-black">Ciudad <span class="text-danger">*</span></label>
                 <select id="c_country" class="form-control">
                   <option value="1">Seleciona una ciudad</option>
-                  <option value="2">bangladesh</option>    
-                  <option value="3">Algeria</option>    
-                  <option value="4">Afghanistan</option>    
-                  <option value="5">Ghana</option>    
-                  <option value="6">Albania</option>    
-                  <option value="7">Bahrain</option>    
-                  <option value="8">Colombia</option>    
-                  <option value="9">Dominican Republic</option>
-                  <option value="10">Peru</option>
+                  <option value="2">Arequipa</option>
+                  <option value="3">Cusco</option>
+                  <option value="4">Trujillo</option>
+                  <option value="5">Chiclayo</option>
+                  <option value="6">Piura</option>
+                  <option value="7">Iquitos</option>
+                  <option value="8">Huancayo</option>
+                  <option value="9">Tacna</option>
+                  <option value="10">Puno</option>
+                  <option value="11">Lima</option>
                 </select>
               </div>
               <div class="form-group row">
@@ -122,7 +123,7 @@
                   <input type="text" class="form-control" id="c_state_country" name="c_state_country">
                 </div>
                 <div class="col-md-6">
-                  <label for="c_postal_zip" class="text-black">vence <span class="text-danger">*</span></label>
+                  <label for="c_postal_zip" class="text-black">Vence <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
                 </div>
               </div>
@@ -131,11 +132,11 @@
           <div class="col-md-6">
             <div class="row mb-5">
               <div class="col-md-12">
-                <h2 class="h3 mb-3 text-black">Your Order</h2>
+                <h2 class="h3 mb-3 text-black">Tu carrito</h2>
                 <div class="p-3 p-lg-5 border">
                   <table class="table site-block-order-table mb-5">
                     <thead>
-                      <th>Product</th>
+                      <th>Producto</th>
                       <th>Total</th>
                     </thead>
                     <tbody>
@@ -146,13 +147,13 @@
                       </tr>
                     <%}%>
                       <tr>
-                        <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                        <td class="text-black font-weight-bold"><strong>Total</strong></td>
                         <td class="text-black font-weight-bold"><strong>$<%=carro.getTotal()%></strong></td>
                       </tr>
                     </tbody>
                   </table>
                   <div class="form-group">
-                    <button  class="btn btn-primary btn-lg py-3 btn-block" onclick="pagarOrden()">pagar orden</button>
+                    <button  class="btn btn-primary btn-lg py-3 btn-block" onclick="pagarOrden()">Pagar</button>
                   </div>
                   <script>
                     function pagarOrden() {

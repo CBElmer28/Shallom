@@ -1,0 +1,129 @@
+/* Contenedor transparente */
+.responsive-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: -350px;
+    width:100%;
+}
+
+/* Texto principal */
+.main-title {
+    font-size: 5rem; /* Tamaño responsivo */
+    color: #ffffff;
+    text-shadow: 2px 2px 7px yellow;
+}
+
+/* Párrafo introductorio */
+.intro-paragraph {
+    font-size:1.9rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+
+
+/* Media queries para dispositivos pequeños */
+
+@media (max-width: 1500px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .intro-paragraph {
+        font-size: 1.2rem;
+    }
+
+    .responsive-container {
+        margin-left: 485px;
+        margin-right:-80px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 120%;
+        margin-top: 20px;
+
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .main-title {
+        font-size: 1.2rem;
+    }
+
+    .intro-paragraph {
+        font-size: 0.5rem;
+    }
+
+    .responsive-container {
+        margin-left: 485px;
+        margin-right:-50px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 140%;
+        margin-top: 20px;
+
+    }
+}
+
+@media (max-width: 960px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .intro-paragraph {
+        font-size: 1rem;
+    }
+
+    .responsive-container {
+        margin-left: 385px;
+        margin-right:-180px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 120%;
+        margin-top: 20px;
+
+    }
+}
+
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1rem;
+    }
+
+    .intro-paragraph {
+        font-size: 0.7rem;
+    }
+
+    .responsive-container {
+        margin-left: 275px;
+        margin-right:-330px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: 65px;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 0.6rem;
+    }
+
+    .intro-paragraph {
+        font-size: 0.5rem;
+    }
+
+    .responsive-container {
+        margin-left: 275px;
+        margin-right:-330px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: 60px;
+    }
+}

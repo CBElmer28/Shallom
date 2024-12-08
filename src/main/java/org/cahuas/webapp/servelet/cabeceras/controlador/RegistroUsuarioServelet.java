@@ -42,7 +42,6 @@ public class RegistroUsuarioServelet  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Obtener los datos del formulario
-        // Obtener los datos del formulario
         String username = req.getParameter("nombre");
         String user = req.getParameter("user");
         String correo = req.getParameter("correo");
@@ -52,6 +51,7 @@ public class RegistroUsuarioServelet  extends HttpServlet {
         try {
             telefono = Integer.valueOf(req.getParameter("telefono"));
         } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             telefono = 0;
         }
         
@@ -60,10 +60,9 @@ public class RegistroUsuarioServelet  extends HttpServlet {
         try {
             dni = Integer.valueOf(req.getParameter("DNI"));
         } catch (NumberFormatException e) {
-        } catch (NumberFormatException e) {
             dni = 0;
         }
-        
+
         String password = req.getParameter("password");
 
         // Validar los datos (opcional)

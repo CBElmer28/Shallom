@@ -45,6 +45,7 @@ public class ProductosServelet extends HttpServlet {
         Connection conn = null;
         try {
             // Obtener conexión a la base de datos
+            // Obtener conexión a la base de datos
             conn = ConexionBaseDatos.getConnection();
             
             // Crear una instancia del servicio de productos
@@ -71,6 +72,7 @@ public class ProductosServelet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/admin/inventario.jsp").forward(req, resp);
             }
         } catch (SQLException e) {
+            // Manejar excepciones de base de datos
             // Manejar excepciones de base de datos
             throw new RuntimeException(e);
         }

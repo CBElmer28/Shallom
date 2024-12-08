@@ -14,8 +14,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<!-- My CSS -->
 	<link rel="stylesheet" href="/webbs/admin/assets/css/tabla.css"/>
-	<%List<Venta> ventaTotal = (List<Venta>)request.getAttribute("historialVentaTotal");%>
-	<%//List<DetalleVenta> DetalleVenta = (List<DetalleVenta>) request.getAttribute("todoDetalleVenta");%>
+	<% List<Venta> ventaTotal = (List<Venta>)session.getAttribute("historialVentaTotal"); %>
+	<%List<DetalleVenta> DetalleVenta = (List<DetalleVenta>) session.getAttribute("todoDetalleVenta");%>
 
 	<title>AdminHub</title>
 </head>
@@ -27,9 +27,6 @@
 		<i class='bx bxs-cloud fs-3'></i>
 		<span class="fs-4 ms-2">SHALOM</span>
 	</a>
-	<%if (ventaTotal ==null){%>
-	<p>ordenes</p>
-	<%}else {  }%>
 	<ul class="nav flex-column" id="t">
 		<li class="nav-item" id="actives">
 			<a href="/webbs/admin/index.jsp" class="active">
@@ -37,16 +34,16 @@
 				<span class="text">Dashboard</span>
 			</a>
 		</li>
-		<li class="nav-item ">
+		<li class="nav-item">
 			<a href="/webbs/productos">
 				<i class='bx bxs-shopping-bag-alt'></i>
-				<span class="text">Productos</span>
+				<span class="text">Inventario</span>
 			</a>
 		</li>
 		<li class="nav-item">
-			<a href="#">
+			<a href="/webbs/admin/configVenta.jsp">
 				<i class='bx bxs-doughnut-chart'></i>
-				<span class="text">Analytics</span>
+				<span class="text">Ventas</span>
 			</a>
 		</li>
 		<li class="nav-item">
@@ -58,12 +55,6 @@
 
 	</ul>
 	<ul class="nav flex-column">
-		<li class="nav-item ">
-			<a href="#">
-				<i class='bx bxs-cog'></i>
-				<span class="text">Configuracion</span>
-			</a>
-		</li>
 		<li class="nav-item ">
 			<a href="/webbs/logout" style="color: red;">
 				<i class='bx bxs-log-out-circle'></i>
@@ -87,7 +78,7 @@
 			<i class="bx bx-menu fs-3" id="menu-btn" style="cursor: pointer;" aria-label="Toggle Sidebar"></i>
 
 			<!-- Título de la barra de navegación -->
-			<a class="navbar-brand ms-2" href="#">Categories</a>
+			<a class="navbar-brand ms-2" href="#">Dashboard</a>
 
 			<!-- Botón de colapso para dispositivos pequeños -->
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -125,11 +116,11 @@
 				<h1>Dashboard</h1>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Dashboard</a>
+						<a href="#">Admin</a>
 					</li>
 					<li><i class='bx bx-chevron-right' ></i></li>
 					<li>
-						<a class="active" href="#">Home</a>
+						<a class="active" href="#">Dashboard</a>
 					</li>
 				</ul>
 			</div>
@@ -140,35 +131,32 @@
 				<i class='bx bxs-calendar-check' ></i>
 				<span class="text">
 					<%
-						/*int total =0;  // Variable acumuladora para el total
-						for (Venta v: ventaTotal) {
-                            total++;
-						}*/
+						int total =ventaTotal.size();  // Variable acumuladora para el total
 					%>
-						<h3>0</h3>
-						<p>ordenes</p>
+						<h3><%=total%></h3>
+						<p>transacciones</p>
 					</span>
 			</li>
 			<li>
 				<i class='bx bxs-shopping-bag-alt' ></i>
 				<span class="text">
 					<%
-						//int totaldeta = DetalleVenta.size(); // Variable acumuladora para el total
+						int totaldeta = DetalleVenta.size(); // Variable acumuladora para el total
 					%>
-						<h3>0</h3>
-						<p>venta productos</p>
+						<h3><%=totaldeta%></h3>
+						<p>articulos vendidos</p>
 					</span>
 			</li>
 			<li>
 				<i class='bx bxs-dollar-circle' ></i>
 				<span class="text">
 					<%
-					/*	double totalVentas = 0; // Variable acumuladora para el total
+						double totalVentas = 0; // Variable acumuladora para el total
 						for (Venta v : ventaTotal) {
 							totalVentas += v.getTotal(); // Sumar el total de cada venta
-						}*/
+						}
 					%>
-					<h3>$0</h3>
+					<h3>S/<%=totalVentas%></h3>
 						<p>Total Ventas</p>
 					</span>
 			</li>
@@ -178,59 +166,28 @@
 		<div class="table-data">
 			<div class="order">
 				<div class="head">
-					<h3>Recent Orders</h3>
-					<i class='bx bx-search' ></i>
-					<i class='bx bx-filter' ></i>
+					<h3>Ordenes</h3>
 				</div>
 				<table>
 					<thead>
 					<tr>
-						<th>User</th>
-						<th>Date Order</th>
-						<th>Status</th>
+						<th>Id</th>
+						<th>Estado</th>
+						<th>Fecha</th>
+						<th>Total</th>
 					</tr>
 					</thead>
 					<tbody>
+					<%for(Venta v: ventaTotal){%>
 					<tr>
 						<td>
-							<img src="img/people.png">
-							<p>John Doe</p>
+							<p><%=v.getId()%></p>
 						</td>
-						<td>01-10-2021</td>
-						<td><span class="status completed">Completed</span></td>
+						<td><%=v.getEstado()%></td>
+						<td><%=v.getFecha()%></td>
+						<td><%=v.getTotal()%></td>
 					</tr>
-					<tr>
-						<td>
-							<img src="img/people.png">
-							<p>John Doe</p>
-						</td>
-						<td>01-10-2021</td>
-						<td><span class="status pending">Pending</span></td>
-					</tr>
-					<tr>
-						<td>
-							<img src="img/people.png">
-							<p>John Doe</p>
-						</td>
-						<td>01-10-2021</td>
-						<td><span class="status process">Process</span></td>
-					</tr>
-					<tr>
-						<td>
-							<img src="img/people.png">
-							<p>John Doe</p>
-						</td>
-						<td>01-10-2021</td>
-						<td><span class="status pending">Pending</span></td>
-					</tr>
-					<tr>
-						<td>
-							<img src="img/people.png">
-							<p>John Doe</p>
-						</td>
-						<td>01-10-2021</td>
-						<td><span class="status completed">Completed</span></td>
-					</tr>
+					<%}%>
 					</tbody>
 				</table>
 			</div>

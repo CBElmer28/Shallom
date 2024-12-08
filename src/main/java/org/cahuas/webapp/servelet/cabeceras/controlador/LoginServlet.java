@@ -23,7 +23,7 @@ import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
  * Servlet que maneja el proceso de autenticación de usuarios.
  * Este servlet valida las credenciales del usuario y redirige al usuario a la página correspondiente 
  * dependiendo de su rol (administrador o usuario).
- * 
+ *
  * @author Team Shalom
  * @version 1.5
  */
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
                 // Cargar el historial de ventas del usuario
                 VentaServiceJdbcImpl ventaService = new VentaServiceJdbcImpl(conn);
                 List<Venta> historialVentas = ventaService.obtenerHistorialVentas(ne.getId());
-                
+
                 // Verifica el tipo de usuario y redirige a la página correspondiente
                 if ("admin".equals(ne.getTipo())) {
                     // Si el usuario es un administrador, carga el historial completo de ventas
