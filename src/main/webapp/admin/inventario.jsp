@@ -2,8 +2,6 @@
 <%@page import="java.util.List"%>
 <%List<Producto> productos = (List<Producto>) request.getAttribute("productos");%>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -27,13 +25,13 @@
         <li class="nav-item" id="actives">
             <a href="/webbs/productos" class="active">
                 <i class='bx bxs-shopping-bag-alt'></i>
-                <span class="text">Productos</span>
+                <span class="text">Inventario</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#">
+            <a href="/webbs/admin/configVenta.jsp">
                 <i class='bx bxs-doughnut-chart'></i>
-                <span class="text">Analytics</span>
+                <span class="text">Ventas</span>
             </a>
         </li>
         <li class="nav-item">
@@ -45,12 +43,6 @@
 
     </ul>
     <ul class="nav flex-column">
-        <li class="nav-item ">
-            <a href="#">
-                <i class='bx bxs-cog'></i>
-                <span class="text">Configuracion</span>
-            </a>
-        </li>
         <li class="nav-item ">
             <a href="/webbs/logout" style="color: red;">
                 <i class='bx bxs-log-out-circle'></i>
@@ -70,7 +62,7 @@
             <i class="bx bx-menu fs-3" id="menu-btn" style="cursor: pointer;" aria-label="Toggle Sidebar"></i>
 
             <!-- Título de la barra de navegación -->
-            <a class="navbar-brand ms-2" href="#">Categories</a>
+            <a class="navbar-brand ms-2" href="#">Inventario</a>
 
             <!-- Botón de colapso para dispositivos pequeños -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -105,11 +97,11 @@
             <div class="left">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="#">Admin</a>
                     </li>
                     <li><i class='bx bx-chevron-right' ></i></li>
                     <li>
-                        <a class="active" href="#">Home</a>
+                        <a class="active" href="#">Inventario</a>
                     </li>
                 </ul>
             </div>
@@ -153,10 +145,9 @@
                     <tr>
                         <th>Imagen</th>
                         <th>Nombre</th>
-                        <th>Status</th>
-                        <th>Status</th>
-                        <th>Status</th>
-                        <th>Status</th>
+                        <th>Precio</th>
+                        <th>Entrada</th>
+                        <th>salida</th>
                         <th>acciones</th>
 
                     </tr>
@@ -171,12 +162,17 @@
                         <td>S/<%=p.getPrecio()%></td>
                         <td>01-10-2021</td>
                         <td>01-10-2021</td>
-                        <td>01-10-2021</td>
                         <td>
-                            <button class="btn modificar">
+                            <button class="btn modificar" data-bs-toggle="modal" data-bs-target="#editProductModal"
+                                    data-product-id="<%=p.getId()%>"
+                                    data-product-name="<%=p.getNom()%>"
+                                    data-product-category="<%=p.getCat()%>"
+                                    data-product-price="<%=p.getPrecio()%>"
+                                    data-product-stock="<%=p.getStock()%>"
+                                    data-product-image="<%=p.getRuta_imagen()%>">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn eliminar" >
+                            <button class="btn eliminar" data-bs-toggle="modal" data-bs-target="#deleteProductModal" data-product-id="<%=p.getId()%>">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>

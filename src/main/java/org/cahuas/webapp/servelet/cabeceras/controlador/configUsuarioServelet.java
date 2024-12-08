@@ -11,29 +11,20 @@ import org.cahuas.webapp.servelet.cabeceras.models.modelo.Usuario;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ClienteServiceJdbcImpl;
 import org.cahuas.webapp.servelet.cabeceras.models.services.LoginServiceJdbcImpl;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- * Servlet encargado de procesar la configuración del usuario. Este servlet se activa cuando
- * el usuario realiza una solicitud POST para actualizar sus datos personales y de cuenta.
- * El servlet valida los datos recibidos, realiza las actualizaciones correspondientes en la base de datos,
- * y redirige al usuario a su página de inicio si la operación es exitosa. En caso de error, realiza
- * un rollback y muestra un mensaje de error.
- * 
- * @author Team Shalom
- * @version 1.5
- */
 @WebServlet("/config")
 public class configUsuarioServelet extends HttpServlet {
-    
+
     /**
      * Maneja las solicitudes POST para actualizar la información del usuario.
      * Recibe los parámetros del formulario de configuración del usuario, valida los datos,
      * y realiza las actualizaciones correspondientes en la base de datos utilizando
-     * los servicios `ClienteServiceJdbcImpl` y `LoginServiceJdbcImpl`. En caso de éxito, 
+     * los servicios `ClienteServiceJdbcImpl` y `LoginServiceJdbcImpl`. En caso de éxito,
      * redirige al usuario a la página de inicio. En caso de error, realiza un rollback de la transacción.
      *
      * @param req la solicitud HTTP que contiene los parámetros del formulario de configuración del usuario.
@@ -43,6 +34,7 @@ public class configUsuarioServelet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Obtener los parámetros de la solicitud HTTP
         // Obtener los parámetros de la solicitud HTTP
         String username = req.getParameter("nombre");
         String user = req.getParameter("user");
@@ -63,6 +55,8 @@ public class configUsuarioServelet extends HttpServlet {
 
         // Validación de los datos (si algún campo está vacío, se envía un error)
         if (username == null || user == null || correo == null || password == null) {
+        // Validación de los datos (si algún campo está vacío, se envía un error)
+        if (username == null || user == null || correo == null || password == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos los campos son obligatorios.");
             return;
         }
@@ -78,7 +72,11 @@ public class configUsuarioServelet extends HttpServlet {
 
         try {
             // Iniciar la sesión y comenzar la transacción
+            // Iniciar la sesión y comenzar la transacción
             HttpSession session = req.getSession();
+            conn.setAutoCommit(false); // Desactivar el auto-commit para gestionar transacciones manualmente
+
+            // Crear instancias de los servicios necesarios para realizar las actualizaciones
             conn.setAutoCommit(false); // Desactivar el auto-commit para gestionar transacciones manualmente
 
             // Crear instancias de los servicios necesarios para realizar las actualizaciones

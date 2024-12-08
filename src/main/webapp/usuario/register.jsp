@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Shalom &mdash; Registro</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/Men.jpg"/>
@@ -31,41 +31,41 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="shadow-lg p-2 p-lg-5 rounded" data-aos="fade-up">
-            <div class="wrap-login100 p-t-50 p-b-90">
+            <div class="wrap-login100 p-t-50 p-b-25">
                 <form action="/webbs/registro" method="post" class="login100-form validate-form flex-sb flex-w">
                     <span class="login100-form-title p-b-51">
                         Registro
                     </span>
-                    <label for="nombre" class="form-label">Nombre:</label>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Username es requerido">
+                    <label for="nombre" class="form-label" style="color: #5544a3"> <b>Nombre:</b></label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Nombre es requerido">
                         <input class="input100" type="text" id="nombre" name="nombre" placeholder="Nombre">
                     </div>
 
-                    <label for="user" class="form-label">Usuario:</label>
+                    <label for="user" class="form-label" style="color: #5544a3"><b>Usuario:</b></label>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="User es requerido">
                         <input class="input100" type="text" id="user" name="user" placeholder="Usuario">
                     </div>
 
-                    <label for="correo" class="form-label">Correo Electrónico:</label>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="email" id="correo" name="correo" placeholder="Correo">
+                    <label for="correo" class="form-label" style="color: #5544a3"><b>Correo Electrónico:</b></label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Correo es requerido">
+                        <input class="input100" type="email" id="correo" name="correo" placeholder="Correo" pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
                     </div>
 
-                    <label for="telefono" class="form-label">Celular:</label>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="number" id="telefono" name="telefono" placeholder="Telefono">
+                    <label for="telefono" class="form-label" style="color: #5544a3"><b>Telefono:</b></label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Telefono es requerido">
+                        <input class="input100" type="number" id="telefono" name="telefono" placeholder="Telefono" pattern="^\d{9}$" maxlength="9">
                     </div>
 
-                    <label for="DNI" class="form-label">DNI:</label>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="correo es requerido">
-                        <input class="input100" type="number" id="DNI" name="DNI" placeholder="Dni">
+                    <label for="DNI" class="form-label" style="color: #5544a3"><b>DNI: </b></label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="DNI es requerido">
+                        <input class="input100" type="number" id="DNI" name="DNI" placeholder="Dni" pattern="^\d{8}$" maxlength="8">
                     </div>
 
-                    <label for="password" class="form-label">Contraseña</label>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+                    <label for="password" class="form-label" style="color: #5544a3"><b>Contraseña</b></label>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Contraseña es requerida">
                         <input class="input100" type="password" name="password" id="password" placeholder="Contraseña" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
                     </div>
-
+                    <small class="text-danger">(Debe tener al menos 8 caracteres, incluyendo letras y números.)</small>
 
                     <div class="container-login100-form-btn m-t-17">
                         <button type="submit" class="login100-form-btn">
@@ -76,8 +76,8 @@
             </div>
 
             <div class="text-center">
-                <a href="/webbs/usuario/index.jsp" class="txt1">
-                    regresar
+                <a href="/webbs/usuario/login.jsp" class="txt1">
+                    Regresar
                 </a>
                 </p>
             </div>

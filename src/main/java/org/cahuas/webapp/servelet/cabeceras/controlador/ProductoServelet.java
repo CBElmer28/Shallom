@@ -54,6 +54,7 @@ public class ProductoServelet extends HttpServlet {
         Producto producto = null;
         try {
             // Obtener una conexión a la base de datos
+            // Obtener una conexión a la base de datos
             Connection connection = ConexionBaseDatos.getConnection();
             
             // Crear una instancia del servicio de productos
@@ -72,6 +73,7 @@ public class ProductoServelet extends HttpServlet {
             }
 
         } catch (SQLException e) {
+            // Manejar excepciones de base de datos
             // Manejar excepciones de base de datos
             throw new RuntimeException(e);
         }

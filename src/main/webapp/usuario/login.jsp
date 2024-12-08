@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Shalom &mdash; Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/men.jpg"/>
@@ -39,11 +39,11 @@
 
                   
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Usuario es requerido">
                         <input class="input100" type="text" id="username" name="username" placeholder="Usuario">
                     </div>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Contraseña es requerida">
                         <input class="input100" type="password" name="password" id="password" placeholder="Contraseña">
                     </div>
 
@@ -51,14 +51,14 @@
 
                         <div>
                             <a href="/webbs/usuario/forgotpassword.jsp" class="txt1">
-                                Olvidaste?
+                                Olvidaste tu contraseña?
                             </a>
                         </div>
                     </div>
 
                     <div class="container-login100-form-btn m-t-17">
                         <button type="submit" class="login100-form-btn">
-                            Login
+                            Ingresar
                         </button>
                     </div>
                 </form>
@@ -66,13 +66,13 @@
 
             <div class="text-center">
                 <p class="txt1" style="color: #999999">
-                    aun no tienes cuenta?
+                    Aún no tienes cuenta?
                     <a href="register.jsp" class="txt1">
-                        Create aqui
+                        Crea tu cuenta aquí
                     </a>
                     <<p></p>
                     <a href="/webbs/usuario/index.jsp" class="txt1">
-                        regresar
+                        Regresar
                     </a>
                 </p>
             </div>

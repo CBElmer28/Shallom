@@ -7,8 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Producto;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoService;
@@ -45,6 +44,7 @@ public class ExportarExcelServlet extends HttpServlet {
         Connection connection = null;
         try {
             // Establece la conexión a la base de datos
+            // Establece la conexión a la base de datos
             connection = ConexionBaseDatos.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);  // Maneja la excepción si no se puede conectar a la base de datos
@@ -53,6 +53,8 @@ public class ExportarExcelServlet extends HttpServlet {
         // Obtiene el servicio de productos y la lista de productos
         ProductoService service = new ProductoServiceJdbcImpl(connection);
         List<Producto> productos = service.listar();
+
+        // Configura el tipo de contenido para una descarga de archivo Excel
 
         // Configura el tipo de contenido para una descarga de archivo Excel
         resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
