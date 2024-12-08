@@ -18,9 +18,36 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+/**
+ * Servlet para exportar una boleta en formato PDF.
+ * <p>
+ * Este servlet genera un reporte en PDF basado en los detalles de los productos en el carrito de compras,
+ * utilizando JasperReports. También registra la venta en la base de datos y actualiza el historial de compras
+ * del usuario.
+ * </p>
+ * 
+ * @author Team Shalom
+ * @version 1.8
+ */
 @WebServlet("/usuario/carro/exportarproduc") // Define la URL del servlet para generar el reporte
 public class ExportarBoletaServelet extends HttpServlet {
 
+    /**
+     * Maneja las solicitudes GET para exportar una boleta en formato PDF.
+     * <p>
+     * Este método realiza las siguientes operaciones:
+     * - Obtiene el carrito de compras y los datos del usuario desde la sesión.
+     * - Genera un reporte PDF utilizando JasperReports, con detalles del carrito y un logo de la empresa.
+     * - Registra la venta en la base de datos, incluyendo los detalles de los productos comprados.
+     * - Actualiza el historial de compras del usuario en la sesión.
+     * - Si ocurre un error o faltan recursos, envía un mensaje al cliente.
+     * </p>
+     * 
+     * @param req  Solicitud HTTP que contiene los datos necesarios para generar el reporte.
+     * @param resp Respuesta HTTP que devuelve el reporte PDF o un mensaje de error.
+     * @throws ServletException Si ocurre un error relacionado con el servlet.
+     * @throws IOException      Si ocurre un error de entrada/salida.
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -42,23 +69,58 @@ public class ExportarBoletaServelet extends HttpServlet {
                 Map<String, Object> parameters = new HashMap<>();
                 parameters.put("logoEmpresa", logoEmpresa); // Agrega el logo de la empresa
 
-                // Crea una lista de detalle de productos a partir del carrito
                 List<DatalleProducto> detallesReporte = new ArrayList<>();
-                detallesReporte.add(new DatalleProducto()); // Puedes agregar una entrada vacía si es necesario
-                detallesReporte.addAll(carro.getDetalleProductos()); // Agrega los productos del carro
-
-                // Crea una fuente de datos para JasperReports usando los detalles de productos
+                detallesReporte.add(new DatalleProducto());
+                detallesReporte.addAll(carro.getDetalleProductos());
                 JRBeanArrayDataSource ds = new JRBeanArrayDataSource(detallesReporte.toArray());
-                parameters.put("ds", ds); // Agrega la fuente de datos a los parámetros
+                parameters.put("ds", ds);
 
-                // Carga el reporte Jasper
+                // Generar el reporte PDF
                 JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteProducto);
-                // Rellena el reporte con los parámetros y la fuente de datos
                 JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, ds);
-
-                // Configura la respuesta HTTP para enviar el reporte en formato PDF
                 resp.setContentType("application/pdf");
                 resp.setHeader("Content-Disposition", "inline; filename=boleta.pdf");
+                JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+                out.flush();
+                out.close();
 
-                // Exporta el reporte a PDF y lo escribe en el flujo de salida
-                JasperExportManager.exportReportToPdfStream
+                // Registrar la venta en la base de datos
+                Connection conn = ConexionBaseDatos.getConnection();
+                conn.setAutoCommit(false);
+                VentaServiceJdbcImpl ventaService = new VentaServiceJdbcImpl(conn);
+                Usuario usuario = (Usuario) session.getAttribute("usuario");
+                String estado = "pendiente";
+                int ventaId = ventaService.insertarVenta(usuario.getId(), estado, carro.getTotal());
+
+                // Insertar los detalles de la venta
+                List<DetalleVenta> detallesVenta = new ArrayList<>();
+                for (ItemCarro item : carro.getItems()) {
+                    DetalleVenta detalle = new DetalleVenta(
+                        ventaId,
+                        item.getProducto(),
+                        item.getCantidad(),
+                        item.getProducto().getPrecio(),
+                        item.getCantidad() * item.getProducto().getPrecio()
+                    );
+                    detallesVenta.add(detalle);
+                }
+                ventaService.insertarDetalleVenta(ventaId, detallesVenta);
+                conn.commit();
+
+                // Actualizar el historial de compras del usuario
+                List<Venta> historialVentas = ventaService.obtenerHistorialVentas(usuario.getId());
+                session.setAttribute("historialCompras", historialVentas);
+                carro.getItems().clear();
+            } else {
+                // Manejar el caso en que los recursos faltan
+                resp.setContentType("text/plain");
+                out.println("No se pudo generar el reporte.");
+            }
+        } catch (Exception e) {
+            // Manejar excepciones
+            resp.setContentType("text/plain");
+            out.print("Ocurrió un error al intentar generar el reporte: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}

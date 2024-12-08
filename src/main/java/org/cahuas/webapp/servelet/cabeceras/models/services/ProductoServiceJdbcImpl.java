@@ -11,15 +11,38 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class ProductoServiceJdbcImpl implements ProductoService{
-    private Repository<Producto> repositoryJdbc;
-    private Repository<Proveedor> repositoryProveedorJdbc;
+/**
+ * Implementación del servicio de productos y proveedores utilizando JDBC.
+ * 
+ * Esta clase gestiona las operaciones CRUD para productos y la gestión de categorías de proveedores.
+ * 
+ * @see Producto
+ * @see Proveedor
+ * @see ProductoService
+ * @see ProductoRepositoryImpl
+ * @see ProveedorRepositoryImpl
+ * 
+ * @author Team Shalom
+ * @version 1.5
+ */
+public class ProductoServiceJdbcImpl implements ProductoService {
 
+    private final Repository<Producto> repositoryJdbc;
+    private final Repository<Proveedor> repositoryProveedorJdbc;
+
+    /**
+     * Constructor que inicializa los repositorios de productos y proveedores.
+     * 
+     * @param connection La conexión JDBC a utilizar para las operaciones.
+     */
     public ProductoServiceJdbcImpl(Connection connection) {
         this.repositoryJdbc = new ProductoRepositoryImpl(connection);
         this.repositoryProveedorJdbc = new ProveedorRepositoryImpl(connection);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Producto> listar() {
         try {
@@ -29,6 +52,9 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Producto> porId(int id) {
         try {
@@ -38,8 +64,11 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Producto buscarId(int id)  {
+    public Producto buscarId(int id) {
         try {
             return repositoryJdbc.porId(id);
         } catch (SQLException throwables) {
@@ -47,6 +76,9 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void guardar(Producto producto) {
         try {
@@ -56,6 +88,9 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void eliminar(int id) {
         try {
@@ -65,6 +100,9 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Proveedor> listarCategoria() {
         try {
@@ -74,8 +112,11 @@ public class ProductoServiceJdbcImpl implements ProductoService{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Proveedor  porIdCategoria(int id) {
+    public Proveedor porIdCategoria(int id) {
         try {
             return repositoryProveedorJdbc.porId(id);
         } catch (SQLException throwables) {

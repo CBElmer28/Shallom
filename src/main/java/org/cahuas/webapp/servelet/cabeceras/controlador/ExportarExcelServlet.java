@@ -20,51 +20,116 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet que exporta los productos en formato Excel.
+ * Esta clase maneja la exportación de la lista de productos a un archivo Excel.
+ * El archivo generado incluye las columnas: ID, Nombre, Precio y Cantidad.
+ *
+ * @author Team Shalom
+ * @version 1.0
+ */
 @WebServlet("/ExportarExcel")
 public class ExportarExcelServlet extends HttpServlet {
 
+    /**
+     * Maneja la solicitud GET para exportar la lista de productos a un archivo Excel.
+     * 
+     * @param req la solicitud HTTP
+     * @param resp la respuesta HTTP
+     * @throws ServletException si ocurre un error en el procesamiento del servlet
+     * @throws IOException si ocurre un error de entrada/salida
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Establecer la conexión a la base de datos
         Connection connection = null;
         try {
-            connection = ConexionBaseDatos.getConnection();  // Obtiene la conexión con la base de datos
+            // Establece la conexión a la base de datos
+            connection = ConexionBaseDatos.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);  // Maneja la excepción si no se puede conectar a la base de datos
         }
         
-        // Crear el servicio para manejar los productos y obtener la lista de productos
+        // Obtiene el servicio de productos y la lista de productos
         ProductoService service = new ProductoServiceJdbcImpl(connection);
-        List<Producto> productos = service.listar();  // Obtiene todos los productos desde la base de datos
-        
-        // Configurar la respuesta HTTP para descargar el archivo Excel
+        List<Producto> productos = service.listar();
+
+        // Configura el tipo de contenido para una descarga de archivo Excel
         resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         resp.setHeader("Content-Disposition", "attachment; filename=productos.xlsx");  // Define el nombre del archivo de salida
 
-        try (XSSFWorkbook workbook = new XSSFWorkbook()) {  // Crea un libro de trabajo de Excel usando Apache POI
-            // Crear la hoja de trabajo y el encabezado
+        // Crea un libro de trabajo de Excel en memoria
+        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+            // Crea una hoja llamada "Productos"
             Sheet sheet = workbook.createSheet("Productos");
-            Row headerRow = sheet.createRow(0);  // Fila de encabezado en la primera fila
-            headerRow.createCell(0).setCellValue("ID");
-            headerRow.createCell(1).setCellValue("Nombre");
-            headerRow.createCell(2).setCellValue("Precio");
-            headerRow.createCell(3).setCellValue("Cantidad");
 
-            // Llenar la hoja con los datos de los productos
-            int rowNum = 1;  // Comienza en la segunda fila
-            for (Producto producto : productos) {
-                Row row = sheet.createRow(rowNum++);  // Crea una nueva fila por cada producto
-                row.createCell(0).setCellValue(producto.getId());  // Establece el ID del producto
-                row.createCell(1).setCellValue(producto.getNom());  // Establece el nombre del producto
-                row.createCell(2).setCellValue(producto.getPrecio());  // Establece el precio del producto
-                row.createCell(3).setCellValue(producto.getStock());  // Establece la cantidad en stock del producto
+            // Crea y configura los estilos para las celdas del encabezado
+            CellStyle headerStyle = workbook.createCellStyle();
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setFontHeightInPoints((short) 14);
+            headerFont.setColor(IndexedColors.WHITE.getIndex());
+            headerStyle.setFont(headerFont);
+            headerStyle.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            headerStyle.setAlignment(HorizontalAlignment.CENTER);
+            headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+            headerStyle.setBorderBottom(BorderStyle.THIN);
+            headerStyle.setBorderTop(BorderStyle.THIN);
+            headerStyle.setBorderLeft(BorderStyle.THIN);
+            headerStyle.setBorderRight(BorderStyle.THIN);
+
+            // Crea y configura los estilos para las celdas de los datos
+            CellStyle dataStyle = workbook.createCellStyle();
+            Font dataFont = workbook.createFont();
+            dataFont.setFontHeightInPoints((short) 12);
+            dataStyle.setFont(dataFont);
+            dataStyle.setAlignment(HorizontalAlignment.LEFT);
+            dataStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+            dataStyle.setBorderBottom(BorderStyle.THIN);
+            dataStyle.setBorderTop(BorderStyle.THIN);
+            dataStyle.setBorderLeft(BorderStyle.THIN);
+            dataStyle.setBorderRight(BorderStyle.THIN);
+
+            // Crea la fila de encabezado con los nombres de las columnas
+            Row headerRow = sheet.createRow(0);
+            String[] headers = {"ID", "Nombre", "Precio", "Cantidad"};
+            for (int i = 0; i < headers.length; i++) {
+                Cell cell = headerRow.createCell(i);
+                cell.setCellValue(headers[i]);
+                cell.setCellStyle(headerStyle);
             }
 
-            // Escribir el archivo Excel en la respuesta
+            // Llena las filas con los datos de los productos
+            int rowNum = 1;
+            for (Producto producto : productos) {
+                Row row = sheet.createRow(rowNum++);
+                Cell cellId = row.createCell(0);
+                cellId.setCellValue(producto.getId());
+                cellId.setCellStyle(dataStyle);
+
+                Cell cellName = row.createCell(1);
+                cellName.setCellValue(producto.getNom());
+                cellName.setCellStyle(dataStyle);
+
+                Cell cellPrice = row.createCell(2);
+                cellPrice.setCellValue(producto.getPrecio());
+                cellPrice.setCellStyle(dataStyle);
+
+                Cell cellStock = row.createCell(3);
+                cellStock.setCellValue(producto.getStock());
+                cellStock.setCellStyle(dataStyle);
+            }
+
+            // Ajusta el tamaño de las columnas automáticamente
+            for (int i = 0; i < headers.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            // Escribe el archivo Excel en la respuesta HTTP
             ServletOutputStream outputStream = resp.getOutputStream();
             workbook.write(outputStream);  // Escribe el contenido del libro en el flujo de salida
             outputStream.flush();  // Asegura que todo el contenido se envíe al cliente
         }
     }
 }
-

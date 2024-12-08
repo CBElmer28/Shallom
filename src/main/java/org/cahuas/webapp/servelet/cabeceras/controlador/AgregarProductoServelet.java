@@ -1,4 +1,3 @@
-
 package org.cahuas.webapp.servelet.cabeceras.controlador;
 
 import jakarta.servlet.ServletException;
@@ -10,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Producto;
 import org.cahuas.webapp.servelet.cabeceras.models.modelo.Proveedor;
-import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoService;
 import org.cahuas.webapp.servelet.cabeceras.models.services.ProductoServiceJdbcImpl;
 import org.cahuas.webapp.servelet.cabeceras.models.util.ConexionBaseDatos;
 
@@ -20,82 +18,99 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-// Configuración de la clase servlet para manejar archivos cargados (archivos de imagen)
+/**
+ * Servlet que gestiona la adición de productos a través de un formulario.
+ * <p>
+ * Este servlet permite cargar productos con datos básicos como nombre, categoría, precio,
+ * stock, proveedor, y una imagen asociada. Además, guarda la información del producto en
+ * la base de datos y almacena la imagen en el servidor.
+ * </p>
+ * 
+ * @author Team SHALOM
+ * @version 1.8
+ */
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 5,   // 5 MB
         maxRequestSize = 1024 * 1024 * 10 // 10 MB
 )
-@WebServlet("/agregar-producto") // URL donde este servlet está disponible
+@WebServlet("/agregar-producto")
 public class AgregarProductoServelet extends HttpServlet {
 
-    // Método para manejar la solicitud POST
+    /**
+     * Método que procesa las solicitudes POST para agregar un nuevo producto.
+     * <p>
+     * Los datos requeridos incluyen:
+     * <ul>
+     *     <li><b>nombre</b>: Nombre del producto.</li>
+     *     <li><b>cat</b>: Categoría del producto.</li>
+     *     <li><b>precio</b>: Precio del producto. Si no es numérico, se asigna 0.</li>
+     *     <li><b>stock</b>: Stock del producto. Si no es numérico, se asigna 1.</li>
+     *     <li><b>idProveedor</b>: ID del proveedor. Si no es numérico, se asigna 1.</li>
+     *     <li><b>imagen</b>: Archivo de imagen asociado al producto.</li>
+     * </ul>
+     * </p>
+     * Si el archivo de imagen es válido, se guarda en el servidor y el producto se almacena
+     * en la base de datos.
+     * 
+     * @param request La solicitud HTTP recibida con los datos del formulario.
+     * @param resp    La respuesta HTTP enviada al cliente.
+     * @throws ServletException Si ocurre un error relacionado con el servlet.
+     * @throws IOException      Si ocurre un error de entrada/salida.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            // Establecer conexión a la base de datos
             Connection conn = ConexionBaseDatos.getConnection();
 
-            // Obtener los parámetros del formulario (nombre, categoría, precio, stock, idProveedor)
             String nombre = request.getParameter("nombre");
             String cat = request.getParameter("cat");
 
-            // Validación de precio (si no es un número, se asigna un valor predeterminado de 0)
+            // Validación de precio
             Integer precio;
             try {
                 precio = Integer.valueOf(request.getParameter("precio"));
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 precio = 0;
             }
 
-            // Validación de stock (si no es un número, se asigna un valor predeterminado de 1)
+            // Validación de stock
             Integer stock;
             try {
                 stock = Integer.valueOf(request.getParameter("stock"));
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 stock = 1;
             }
 
-            // Validación del idProveedor (si no es un número, se asigna un valor predeterminado de 1)
+            // Validación de idProveedor
             Integer idProveedor;
             try {
                 idProveedor = Integer.valueOf(request.getParameter("idProveedor"));
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 idProveedor = 1;
             }
 
-            // Instanciar el servicio para manejar la lógica de productos y obtener el proveedor
             ProductoServiceJdbcImpl a = new ProductoServiceJdbcImpl(conn);
-            Proveedor t;
-            t = a.porIdCategoria(idProveedor); // Obtener el proveedor por su ID
+            Proveedor t = a.porIdCategoria(idProveedor);
 
-            // Manejo de archivo cargado (imagen del producto)
-            Part filePart = request.getPart("imagen"); // Obtener el archivo de imagen del formulario
+            Part filePart = request.getPart("imagen");
             if (filePart != null && filePart.getSize() > 0) {
-                // Obtener el nombre del archivo y preparar la ruta de carga
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
                 String uploadPath = getServletContext().getRealPath("/") + "usuario/images";
 
-                // Crear la carpeta de destino si no existe
                 File file = new File(uploadPath);
                 if (!file.exists()) {
-                    file.mkdir(); // Crear el directorio si no existe
+                    file.mkdir();
                 }
 
-                // Guardar el archivo en el directorio de destino
                 filePart.write(uploadPath + File.separator + fileName);
-                
-                // Crear un objeto Producto con los datos recibidos, incluyendo el nombre de archivo de la imagen
+
                 Producto producto = new Producto(nombre, cat, precio, stock, t, fileName);
-                
-                // Guardar el producto en la base de datos
                 a.guardar(producto);
-                
-                // Redirigir al usuario a la lista de productos
+
                 resp.sendRedirect(request.getContextPath() + "/productos");
             }
         } catch (SQLException e) {
-            // Manejo de excepciones en caso de error con la base de datos
             throw new RuntimeException(e);
         }
     }
