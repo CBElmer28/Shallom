@@ -531,8 +531,11 @@ SECRET_KEY=clave_secreta
 
 ## Librerias
 
--JaserReports: Para la generación de boletas en formato PDF. 
--ApachePOI: Para la generación de documentos office como excel para la visualización de la tabla de productos.
+- JaserReports: Para la generación de boletas en formato PDF. 
+- ApachePOI: Para la generación de documentos office como excel para la visualización de la tabla de productos.
+- Jakarta Mail: Una API de Java para enviar, recibir y procesar correos electrónicos, compatible con protocolos como SMTP, POP3 y IMAP.
+- Jakarta Activation: Proporciona una forma de manejar y procesar datos de diferentes formatos, generalmente utilizada junto con Jakarta Mail para adjuntos.
+- Jakarta: Un proyecto de la Fundación Eclipse que proporciona un conjunto de APIs y herramientas de código abierto para el desarrollo de aplicaciones empresariales en Java.
 
 
 
